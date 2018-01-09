@@ -2,15 +2,28 @@
   "name": "identification-rumble",
   "version": "0.0.1",
   "description": "Identification Rumble",
-  "main": "index.js",
   "repository": "https://github.com/marc1404/identification-rumble.git",
   "author": "Marc Vornetran <marc.vornetran@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "nuxt"
+    "dev": "concurrently --kill-others \"nuxt\" \"nodemon api/index.ts\""
   },
   "dependencies": {
-    "nuxt": "1.0.0"
+    "@types/node": "9.3.0",
+    "@types/socket.io": "1.4.31",
+    "nuxt": "1.0.0",
+    "socket.io": "2.0.4",
+    "ts-node": "4.1.0",
+    "typescript": "2.6.2"
+  },
+  "devDependencies": {
+    "concurrently": "3.5.1",
+    "nodemon": "1.14.10"
+  },
+  "nodemonConfig": {
+    "ext": "*.ts",
+    "exec": "ts-node",
+    "watch": "api"
   }
 }
