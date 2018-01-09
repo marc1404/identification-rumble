@@ -1,0 +1,16 @@
+{
+  "name": "identification-rumble",
+  "version": "0.0.1",
+  "description": "Identification Rumble",
+  "main": "index.js",
+  "repository": "https://github.com/marc1404/identification-rumble.git",
+  "author": "Marc Vornetran <marc.vornetran@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "dependencies": {
+    "nuxt": "1.0.0"
+  }
+}
