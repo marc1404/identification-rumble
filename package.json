@@ -1,29 +1,39 @@
 {
-  "name": "identification-rumble",
-  "version": "0.0.1",
-  "description": "Identification Rumble",
-  "repository": "https://github.com/marc1404/identification-rumble.git",
-  "author": "Marc Vornetran <marc.vornetran@gmail.com>",
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "dev": "concurrently --kill-others \"nuxt\" \"nodemon api/index.ts\""
-  },
-  "dependencies": {
-    "@types/node": "9.3.0",
-    "@types/socket.io": "1.4.31",
-    "nuxt": "1.0.0",
-    "socket.io": "2.0.4",
-    "ts-node": "4.1.0",
-    "typescript": "2.6.2"
-  },
-  "devDependencies": {
-    "concurrently": "3.5.1",
-    "nodemon": "1.14.10"
-  },
-  "nodemonConfig": {
-    "ext": "*.ts",
-    "exec": "ts-node",
-    "watch": "api"
-  }
+    "name": "identification-rumble",
+    "version": "0.0.1",
+    "description": "Identification Rumble",
+    "repository": "https://github.com/marc1404/identification-rumble.git",
+    "author": "Marc Vornetran <marc.vornetran@gmail.com>",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "precommit": "pretty-quick --staged",
+        "dev": "concurrently --kill-others \"nuxt\" \"nodemon api/index.ts\""
+    },
+    "dependencies": {
+        "@types/node": "9.3.0",
+        "@types/socket.io": "1.4.31",
+        "bulma": "0.6.1",
+        "nuxt": "1.0.0",
+        "socket.io": "2.0.4",
+        "ts-node": "4.1.0",
+        "typescript": "2.6.2"
+    },
+    "devDependencies": {
+        "concurrently": "3.5.1",
+        "husky": "0.14.3",
+        "node-sass": "4.7.2",
+        "nodemon": "1.14.10",
+        "prettier": "1.9.2",
+        "pretty-quick": "1.2.0",
+        "sass-loader": "6.0.6"
+    },
+    "nodemonConfig": {
+        "ext": "*.ts",
+        "exec": "ts-node",
+        "watch": "api"
+    },
+    "prettier": {
+        "tabWidth": 4
+    }
 }
