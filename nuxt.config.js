@@ -14,8 +14,5 @@ module.exports = {
     css: ["bootstrap/dist/css/bootstrap.css"],
     router: {
         linkActiveClass: "active"
-    },
-    generate: {
-        dir: "docs"
     }
 };
