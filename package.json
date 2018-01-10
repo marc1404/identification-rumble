@@ -40,6 +40,6 @@
     },
     "prettier": {
         "tabWidth": 4,
-        "quotes": true
+        "singleQuote": true
     }
 }
