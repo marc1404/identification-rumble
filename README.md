@@ -3,7 +3,7 @@
 [![forthebadge](http://forthebadge.com/images/badges/built-with-science.svg)](http://forthebadge.com)
 [![forthebadge](http://forthebadge.com/images/badges/made-with-vue.svg)](http://forthebadge.com)
 
-**[Wiki](http://uva-hcm.com/index.php?title=ID2017-team5)** | **[Website](https://identification-rumble.science)**
+**[Wiki](http://uva-hcm.com/index.php?title=ID2017-team5)** | **[Website](https://identification-rumble.science)** | **[Verzetsmuseum Amsterdam](https://www.verzetsmuseum.org/museum/en/museum)** | **[AUX'18](http://uva-aux.nl/)**
 
 ## Meet the Team
 
