@@ -63,3 +63,4 @@ typings/
 # Custom
 .idea/
 .nuxt/
+.DS_Store
