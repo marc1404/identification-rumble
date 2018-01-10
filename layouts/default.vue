@@ -1,6 +1,7 @@
 <template>
     <div class="container-fluid py-3">
         <h1>
+            <img src="/favicon.png" style="width: 40px; height: 40px">
             Identification Rumble
             <small class="text-muted">Verzetsmuseum Amsterdam</small>
         </h1>
