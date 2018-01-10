@@ -8,25 +8,30 @@
     "private": true,
     "scripts": {
         "precommit": "pretty-quick --staged",
-        "dev": "concurrently --kill-others \"nuxt\" \"nodemon api/index.ts\""
+        "dev":
+            "concurrently --kill-others \"yarn dev:frontend\" \"yarn dev:api\"",
+        "dev:frontend": "nuxt",
+        "dev:api": "nodemon api/index.ts",
+        "generate": "nuxt generate"
     },
     "dependencies": {
         "@types/node": "9.3.0",
         "@types/socket.io": "1.4.31",
-        "bulma": "0.6.1",
+        "bootstrap": "4.0.0-beta.3",
+        "date-fns": "1.29.0",
         "nuxt": "1.0.0",
+        "qrcode": "1.2.0",
         "socket.io": "2.0.4",
         "ts-node": "4.1.0",
-        "typescript": "2.6.2"
+        "typescript": "2.6.2",
+        "uuid": "3.1.0"
     },
     "devDependencies": {
         "concurrently": "3.5.1",
         "husky": "0.14.3",
-        "node-sass": "4.7.2",
         "nodemon": "1.14.10",
         "prettier": "1.9.2",
-        "pretty-quick": "1.2.0",
-        "sass-loader": "6.0.6"
+        "pretty-quick": "1.2.0"
     },
     "nodemonConfig": {
         "ext": "*.ts",
@@ -34,6 +39,7 @@
         "watch": "api"
     },
     "prettier": {
-        "tabWidth": 4
+        "tabWidth": 4,
+        "quotes": true
     }
 }
