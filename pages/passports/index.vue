@@ -6,17 +6,17 @@
             <table class="table table-responsive">
                 <thead>
                 <tr>
-                    <th>UUID</th>
+                    <th>ID</th>
                     <th>Jewish Ancestry</th>
                     <th>Created</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr :key="passport.uuid" v-for="passport in passportService.passports">
+                <tr :key="passport.id" v-for="passport in passports">
                     <td>
-                        <nuxt-link :to="{ name: 'passports-uuid', params: { uuid: passport.uuid }}">
-                            {{ passport.uuid }}
+                        <nuxt-link :to="{ name: 'passports-id', params: { id: passport.id }}">
+                            {{ passport.id }}
                         </nuxt-link>
                     </td>
                     <td>
@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import passportService from '../../src/passportService';
+import socketService from '../../src/socketService';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
 export default {
@@ -69,22 +69,39 @@ export default {
     data() {
         return {
             hasJewishAncestry: false,
-            passportService: passportService
+            passports: []
         };
     },
     methods: {
-        createPassport() {
-            passportService.createPassport(this.hasJewishAncestry);
+        async createPassport() {
+            const passport = await socketService.createPassport(
+                this.hasJewishAncestry
+            );
+
+            if (!passport) {
+                console.error('Could not create passport!');
+                return;
+            }
+
+            this.passports.push(passport);
         },
         removePassport(passport) {
-            passportService.removePassport(passport);
+            socketService
+                .removePassport(passport.id)
+                .catch(error => console.error(error));
+
+            for (let i = 0; i < this.passports.length; i++) {
+                if (this.passports[i].id === passport.id) {
+                    this.passports.splice(i, 1);
+                }
+            }
         },
         distanceInWordsToNow(date) {
             return distanceInWordsToNow(date);
         }
     },
-    mounted() {
-        passportService.loadPassports();
+    async mounted() {
+        this.passports = await socketService.getPassports();
     }
 };
 </script>

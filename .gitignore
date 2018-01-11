@@ -64,3 +64,4 @@ typings/
 .idea/
 .nuxt/
 .DS_Store
+passports.json

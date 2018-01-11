@@ -21,10 +21,7 @@ module.exports = {
                 href: 'https://fonts.googleapis.com/icon?family=Material+Icons'
             }
         ],
-        script: [
-            { src: 'http://localhost:3001/socket.io/socket.io.js', body: true },
-            { src: '/instascan.min.js', async: true }
-        ]
+        script: [{ src: '/instascan.min.js', async: true }]
     },
     css: ['bootstrap/dist/css/bootstrap.css'],
     router: {

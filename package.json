@@ -15,16 +15,18 @@
         "generate": "nuxt generate"
     },
     "dependencies": {
+        "@types/jsonfile": "4.0.1",
         "@types/node": "9.3.0",
         "@types/socket.io": "1.4.31",
         "bootstrap": "4.0.0-beta.3",
         "date-fns": "1.29.0",
+        "jsonfile": "4.0.0",
         "nuxt": "1.0.0",
         "qrcode": "1.2.0",
         "socket.io": "2.0.4",
+        "socket.io-client": "2.0.4",
         "ts-node": "4.1.0",
-        "typescript": "2.6.2",
-        "uuid": "3.1.0"
+        "typescript": "2.6.2"
     },
     "devDependencies": {
         "concurrently": "3.5.1",

@@ -1,11 +1,8 @@
 <template>
     <div>
 
-        <header class="bg-light p-1">
-            <h1 class="h1-responsive">
-                <img src="/favicon.png" style="width: 40px; height: 40px">
-                Identification Rumble
-            </h1>
+        <header class="bg-light p-2">
+            <img src="/logo-text.png" style="height: 50px" alt="Identification Rumble">
         </header>
 
         <div class="row m-0" style="min-height: 100vh">
@@ -43,6 +40,8 @@
 </template>
 
 <script>
+import socketService from '../src/socketService';
+
 export default {
     name: 'Layout',
     data() {
