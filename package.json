@@ -8,10 +8,9 @@
     "private": true,
     "scripts": {
         "precommit": "pretty-quick --staged",
-        "dev":
-            "concurrently --kill-others \"yarn dev:frontend\" \"yarn dev:api\"",
         "dev:frontend": "nuxt",
         "dev:api": "nodemon api/index.ts",
+        "start:api": "forever -c ts-node api/index.ts",
         "generate": "nuxt generate"
     },
     "dependencies": {
@@ -20,6 +19,7 @@
         "@types/socket.io": "1.4.31",
         "bootstrap": "4.0.0-beta.3",
         "date-fns": "1.29.0",
+        "forever": "0.15.3",
         "jsonfile": "4.0.0",
         "nuxt": "1.0.0",
         "qrcode": "1.2.0",

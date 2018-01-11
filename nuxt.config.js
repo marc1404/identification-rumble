@@ -4,7 +4,7 @@ try {
 
 module.exports = {
     env: {
-        API_HOST: process.env.API_HOST || 'http://94.130.100.207:3000'
+        API_HOST: process.env.API_HOST || 'http://94.130.100.207:3001'
     },
     head: {
         title: 'Identification Rumble',
