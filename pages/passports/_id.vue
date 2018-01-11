@@ -22,7 +22,7 @@ export default {
     name: 'Passport',
     head() {
         return {
-            title: 'Passport'
+            title: 'Passport #' + this.$route.params.id
         };
     },
     methods: {

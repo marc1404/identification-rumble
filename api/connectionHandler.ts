@@ -6,7 +6,8 @@ class ConnectionHandler {
         'getPassports',
         'createPassport',
         'removePassport',
-        'getDilemmas'
+        'getDilemmas',
+        'getDilemmaBySlug'
     ];
 
     handle(socket: Socket) {

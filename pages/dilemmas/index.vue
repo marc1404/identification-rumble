@@ -3,12 +3,12 @@
 
         <div class="list-group d-inline-block">
             <nuxt-link
-                    :key="dilemma.slug"
+                    :key="dilemma.id"
                     :to="{ name: 'dilemmas-slug', params: { slug: dilemma.slug }}"
                     v-for="dilemma in dilemmas"
-                    class="list-group-item list-group-item-action">
+                    class="list-group-item list-group-item-action text-dark">
                 {{ dilemma.name }}
-            </nuxt-link>
+        </nuxt-link>
         </div>
 
     </div>

@@ -42,6 +42,10 @@ class SocketService {
     getDilemmas() {
         return this.emit('getDilemmas');
     }
+
+    getDilemmaBySlug(slug) {
+        return this.emit('getDilemmaBySlug', { slug: slug });
+    }
 }
 
 export default new SocketService();
