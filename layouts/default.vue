@@ -13,7 +13,7 @@
 
                 <aside class="bg-light" style="flex: 1">
                     <nav class="nav nav-pills flex-column">
-                        <nuxt-link :to="link.to" class="nav-item nav-link" :exact="link.exact" v-for="link in aside">
+                        <nuxt-link :key="link.to" :to="link.to" class="nav-item nav-link" :exact="link.exact" v-for="link in aside">
                             <i class="material-icons md-18 text-dark pr-1">{{ link.icon }}</i>
                             <span class="text-danger">{{ link.label }}</span>
                         </nuxt-link>
