@@ -2,14 +2,14 @@
     <div>
 
         <header class="bg-light p-1">
-            <h1>
+            <h1 class="h1-responsive">
                 <img src="/favicon.png" style="width: 40px; height: 40px">
                 Identification Rumble
             </h1>
         </header>
 
-        <div class="row" style="min-height: 100vh">
-            <div class="col-12 col-md-4 col-lg-2 d-flex">
+        <div class="row m-0" style="min-height: 100vh">
+            <div class="col-12 col-md-4 col-lg-2 d-flex p-0">
 
                 <aside class="bg-light" style="flex: 1">
                     <nav class="nav nav-pills flex-column">
@@ -21,7 +21,7 @@
                 </aside>
 
             </div>
-            <div class="col-12 col-md-8 col-lg-10">
+            <div class="col-12 col-md-8 col-lg-10 p-3">
 
                 <article>
                     <nuxt />
@@ -125,5 +125,11 @@ body {
 
 .nav-item.nav-link.active .material-icons {
     color: white !important;
+}
+
+@media (max-width: 575px) {
+    .h1-responsive {
+        font-size: 2rem;
+    }
 }
 </style>
