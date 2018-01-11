@@ -4,7 +4,8 @@ try {
 
 module.exports = {
     env: {
-        API_HOST: process.env.API_HOST || 'http://94.130.100.207:3001'
+        API_HOST:
+            process.env.API_HOST || 'https://api.identification-rumble.science'
     },
     head: {
         title: 'Identification Rumble',
