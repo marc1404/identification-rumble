@@ -93,10 +93,9 @@ export default {
             }
 
             alert(
-                'Passport #' +
-                    passport.id +
-                    ' scanned answer: ' +
-                    this.answer.label
+                `Passport #${passport.id} scanned answer: ${
+                    this.selectedAnswer.label
+                }`
             );
         }
     },
