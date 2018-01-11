@@ -29,9 +29,9 @@
                         </span>
                     </td>
                     <td class="text-right">
-                        <button type="button" class="btn btn-link btn-sm text-danger" @click="removePassport(passport)">
+                        <a href="#" class="text-danger" @click.prevent="removePassport(passport)">
                             Remove
-                        </button>
+                        </a>
                     </td>
                 </tr>
                 </tbody>
@@ -56,41 +56,44 @@
 </template>
 
 <script>
-    import passportService from '../../src/passportService';
-    import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import passportService from '../../src/passportService';
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
-    export default {
-        name: 'Passports',
-        head() {
-            return {
-                title: 'Passports'
-            };
+export default {
+    name: 'Passports',
+    head() {
+        return {
+            title: 'Passports'
+        };
+    },
+    data() {
+        return {
+            hasJewishAncestry: false,
+            passportService: passportService
+        };
+    },
+    methods: {
+        createPassport() {
+            passportService.createPassport(this.hasJewishAncestry);
         },
-        data() {
-            return {
-                hasJewishAncestry: false,
-                passportService: passportService
-            };
+        removePassport(passport) {
+            passportService.removePassport(passport);
         },
-        methods: {
-            createPassport() {
-                passportService.createPassport(this.hasJewishAncestry);
-            },
-            removePassport(passport) {
-                passportService.removePassport(passport);
-            },
-            distanceInWordsToNow(date) {
-                return distanceInWordsToNow(date);
-            }
-        },
-        mounted() {
-            passportService.loadPassports();
+        distanceInWordsToNow(date) {
+            return distanceInWordsToNow(date);
         }
-    };
+    },
+    mounted() {
+        passportService.loadPassports();
+    }
+};
 </script>
 
 <style>
-    table.table, table.table thead, table.table th, table.table th td {
-        border-top: none;
-    }
+table.table,
+table.table thead,
+table.table th,
+table.table th td {
+    border-top: none;
+}
 </style>
