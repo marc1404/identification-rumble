@@ -1,29 +1,31 @@
 <template>
     <div>
 
-        <header class="bg-light p-2">
-            <img src="/logo-text.png" style="height: 50px" alt="Identification Rumble">
-        </header>
+        <div class="d-flex flex-column" style="min-height: 100vh">
+            <header class="bg-light p-2">
+                <img class="img-fluid" src="/logo-text.png" style="height: 50px" alt="Identification Rumble">
+            </header>
 
-        <div class="row m-0" style="min-height: 100vh">
-            <div class="col-12 col-md-4 col-lg-2 d-flex p-0">
+            <div class="row m-0 flex-column flex-sm-row" style="flex: 1">
+                <div class="col-12 col-md-4 col-lg-2 d-flex p-0">
 
-                <aside class="bg-light" style="flex: 1">
-                    <nav class="nav nav-pills flex-column">
-                        <nuxt-link :key="link.to" :to="link.to" class="nav-item nav-link" :exact="link.exact" v-for="link in aside">
-                            <i class="material-icons md-18 text-dark pr-1">{{ link.icon }}</i>
-                            <span class="text-danger">{{ link.label }}</span>
-                        </nuxt-link>
-                    </nav>
-                </aside>
+                    <aside class="bg-light w-100">
+                        <nav class="nav nav-pills flex-column">
+                            <nuxt-link :key="link.to" :to="link.to" class="nav-item nav-link" :exact="link.exact" v-for="link in aside">
+                                <i class="material-icons md-18 text-dark pr-1">{{ link.icon }}</i>
+                                <span class="text-danger">{{ link.label }}</span>
+                            </nuxt-link>
+                        </nav>
+                    </aside>
 
-            </div>
-            <div class="col-12 col-md-8 col-lg-10 p-0">
+                </div>
+                <div class="col-12 col-md-8 col-lg-10 p-0">
 
-                <article>
-                    <nuxt />
-                </article>
+                    <article>
+                        <nuxt />
+                    </article>
 
+                </div>
             </div>
         </div>
 
