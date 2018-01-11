@@ -1,35 +1,40 @@
 <template>
     <div>
 
-        <div class="container-fluid py-3" style="min-height: 100vh">
+        <header class="bg-light p-1">
             <h1>
                 <img src="/favicon.png" style="width: 40px; height: 40px">
                 Identification Rumble
-                <small class="text-muted">Verzetsmuseum Amsterdam</small>
             </h1>
+        </header>
 
-            <hr />
+        <div class="row" style="min-height: 100vh">
+            <div class="col-12 col-md-4 col-lg-2 d-flex">
 
-            <div class="row">
-                <div class="col-12 col-md-4 col-lg-2">
+                <aside class="bg-light" style="flex: 1">
                     <nav class="nav nav-pills flex-column">
-                        <nuxt-link to="/" class="nav-item nav-link" exact>Home</nuxt-link>
-                        <nuxt-link to="/dilemmas" class="nav-item nav-link">Dilemmas</nuxt-link>
-                        <nuxt-link to="/passports" class="nav-item nav-link">Passports</nuxt-link>
-                        <nuxt-link to="/evaluation" class="nav-item nav-link">Evaluation</nuxt-link>
+                        <nuxt-link :to="link.to" class="nav-item nav-link" :exact="link.exact" v-for="link in aside">
+                            <i class="material-icons md-18 text-dark pr-1">{{ link.icon }}</i>
+                            <span class="text-danger">{{ link.label }}</span>
+                        </nuxt-link>
                     </nav>
-                </div>
-                <div class="col-12 col-md-8 col-lg-10">
+                </aside>
+
+            </div>
+            <div class="col-12 col-md-8 col-lg-10">
+
+                <article>
                     <nuxt />
-                </div>
+                </article>
+
             </div>
         </div>
 
-        <footer class="bg-light py-3">
+        <footer class="bg-light py-1">
             <nav class="nav nav-fill flex-column flex-md-row">
-                <a rel="noopener" :href="link.href" class="nav-item nav-link text-left text-md-center text-danger" v-for="link in footer">
-                    <i class="material-icons md-18 text-dark">{{ link.icon }}</i>
-                    {{ link.label }}
+                <a rel="noopener" :href="link.href" class="nav-item nav-link text-left text-md-center" v-for="link in footer">
+                    <i class="material-icons md-18 text-dark pr-1">{{ link.icon }}</i>
+                    <span class="text-danger">{{ link.label }}</span>
                 </a>
             </nav>
         </footer>
@@ -42,6 +47,16 @@ export default {
     name: 'Layout',
     data() {
         return {
+            aside: [
+                { to: '/', label: 'Home', icon: 'home', exact: true },
+                { to: '/dilemmas', label: 'Dilemmas', icon: 'report_problem' },
+                {
+                    to: '/passports',
+                    label: 'Passports',
+                    icon: 'perm_contact_calendar'
+                },
+                { to: '/evaluation', label: 'Evaluation', icon: 'insert_chart' }
+            ],
             footer: [
                 {
                     href: 'https://github.com/marc1404/identification-rumble',
@@ -80,6 +95,11 @@ export default {
 </script>
 
 <style>
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
 .material-icons {
     display: inline-flex;
     vertical-align: middle;
@@ -96,5 +116,14 @@ export default {
 }
 .material-icons.md-48 {
     font-size: 48px;
+}
+
+.nav-item.nav-link.active {
+    background-color: #343a40;
+    border-radius: 0;
+}
+
+.nav-item.nav-link.active .material-icons {
+    color: white !important;
 }
 </style>
