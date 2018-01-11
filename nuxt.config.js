@@ -15,6 +15,10 @@ module.exports = {
                 href: '/favicon.png',
                 sizes: '64x64',
                 type: 'image/png'
+            },
+            {
+                rel: 'stylesheet',
+                href: 'https://fonts.googleapis.com/icon?family=Material+Icons'
             }
         ],
         script: [{ src: '/instascan.min.js', async: true }]
