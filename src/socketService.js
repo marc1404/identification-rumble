@@ -38,14 +38,6 @@ class SocketService {
     removePassport(id) {
         return this.emit('removePassport', { id: id });
     }
-
-    getDilemmas() {
-        return this.emit('getDilemmas');
-    }
-
-    getDilemmaBySlug(slug) {
-        return this.emit('getDilemmaBySlug', { slug: slug });
-    }
 }
 
 export default new SocketService();

@@ -11,33 +11,35 @@
             </ol>
         </nav>
 
-        <div class="p-3">
-            <h1>{{ dilemma.name }}</h1>
-        </div>
+        <component :is="dilemma.componentName" />
 
     </div>
 </template>
 
 <script>
-import socketService from '../../src/socketService';
+import dilemmaService from '../../src/dilemmaService';
+import registerComponent from '~/components/dilemmas/register.vue';
+import stayOnComponent from '~/components/dilemmas/stayOn.vue';
 
 export default {
     name: 'Dilemma',
+    components: {
+        register: registerComponent,
+        stayOn: stayOnComponent
+    },
     head() {
         return {
             title: this.title
         };
     },
     data() {
-        return {
-            title: this.$route.params.slug,
-            dilemma: {}
-        };
-    },
-    async mounted() {
         const { slug } = this.$route.params;
-        this.dilemma = await socketService.getDilemmaBySlug(slug);
-        this.title = this.dilemma.name;
+        const dilemma = dilemmaService.findBySlug(slug);
+
+        return {
+            title: dilemma.name,
+            dilemma: dilemma
+        };
     }
 };
 </script>

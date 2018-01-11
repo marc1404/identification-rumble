@@ -13,14 +13,6 @@ class EventHandler {
     async removePassport({ id }) {
         passportService.removePassport(id);
     }
-
-    async getDilemmas() {
-        return dilemmaService.getDilemmas();
-    }
-
-    async getDilemmaBySlug({ slug }) {
-        return dilemmaService.getDilemmaBySlug(slug);
-    }
 }
 
 export default new EventHandler();

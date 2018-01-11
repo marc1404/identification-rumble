@@ -3,7 +3,7 @@
 
         <div class="list-group d-inline-block">
             <nuxt-link
-                    :key="dilemma.id"
+                    :key="dilemma.slug"
                     :to="{ name: 'dilemmas-slug', params: { slug: dilemma.slug }}"
                     v-for="dilemma in dilemmas"
                     class="list-group-item list-group-item-action text-dark">
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import socketService from '../../src/socketService';
+import dilemmaService from '../../src/dilemmaService';
 
 export default {
     name: 'Dilemmas',
@@ -26,11 +26,8 @@ export default {
     },
     data() {
         return {
-            dilemmas: []
+            dilemmas: dilemmaService.dilemmas
         };
-    },
-    async mounted() {
-        this.dilemmas = await socketService.getDilemmas();
     }
 };
 </script>
