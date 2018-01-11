@@ -1,11 +1,11 @@
 <template>
-    <div class="p-3">
+    <div>
         <h1>Register?</h1>
     </div>
 </template>
 
 <script>
-    export default {
-        name: 'Register'
-    };
+export default {
+    name: 'Register'
+};
 </script>

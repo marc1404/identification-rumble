@@ -1,11 +1,11 @@
 <template>
-    <div class="p-3">
+    <div>
         <h1>Stay on?</h1>
     </div>
 </template>
 
 <script>
-    export default {
-        name: 'StayOn'
-    };
+export default {
+    name: 'StayOn'
+};
 </script>

@@ -1,10 +1,14 @@
 import Dilemma from './Dilemma';
+import Answer from './Answer';
 
 class DilemmaService {
     constructor() {
         this.dilemmas = [
-            new Dilemma('register', 'Register?', 'register'),
-            new Dilemma('stay-on', 'Stay on?', 'stayOn')
+            new Dilemma('register', 'Register?', 'register', [
+                new Answer(0, 'Yes'),
+                new Answer(1, 'No')
+            ]),
+            new Dilemma('stay-on', 'Stay on?', 'stayOn', [])
         ];
     }
 
