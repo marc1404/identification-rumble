@@ -1,4 +1,4 @@
-[Identification Rumble](static/logo-hq.png)
+![Identification Rumble](static/logo-hq.png)
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-science.svg)](http://forthebadge.com)
 [![forthebadge](http://forthebadge.com/images/badges/made-with-vue.svg)](http://forthebadge.com)
