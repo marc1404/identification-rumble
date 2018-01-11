@@ -11,7 +11,7 @@
         "dev:frontend": "nuxt",
         "dev:api": "nodemon api/index.ts",
         "start:api": "forever -c ts-node api/index.ts",
-        "generate": "yarn install mime-db && nuxt generate"
+        "generate": "yarn add mime-db && nuxt generate"
     },
     "dependencies": {
         "@types/jsonfile": "4.0.1",
