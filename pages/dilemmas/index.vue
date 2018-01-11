@@ -1,6 +1,12 @@
 <template>
-    <div>
-        Dilemmas
+    <div class="list-group w-50">
+        <nuxt-link
+            :key="dilemma.slug"
+            :to="{ name: 'dilemmas-slug', params: { slug: dilemma.slug }}"
+            v-for="dilemma in dilemmas"
+            class="list-group-item list-group-item-action">
+            {{ dilemma.name }}
+        </nuxt-link>
     </div>
 </template>
 
