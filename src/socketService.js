@@ -6,7 +6,8 @@ class SocketService {
     }
 
     connect() {
-        this.socket = io('http://localhost:3001');
+        const apiHost = process.env.API_HOST;
+        this.socket = io(apiHost);
     }
 
     getSocket() {

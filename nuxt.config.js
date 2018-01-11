@@ -1,4 +1,11 @@
+try {
+    require('dotenv').config();
+} catch (error) {}
+
 module.exports = {
+    env: {
+        API_HOST: process.env.API_HOST || 'http://94.130.100.207:3000'
+    },
     head: {
         title: 'Identification Rumble',
         titleTemplate: '%s | Identification Rumble',
