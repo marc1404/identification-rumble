@@ -58,6 +58,16 @@ class PassportService {
             console.error(error);
         });
     }
+
+    getPassport(id): Passport {
+        for (const passport of this.passports) {
+            if (passport.id === id) {
+                return passport;
+            }
+        }
+
+        return null;
+    }
 }
 
 export default new PassportService();

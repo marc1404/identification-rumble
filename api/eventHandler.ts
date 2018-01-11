@@ -13,6 +13,10 @@ class EventHandler {
     async removePassport({ id }) {
         passportService.removePassport(id);
     }
+
+    async getPassport({ id }) {
+        return passportService.getPassport(id);
+    }
 }
 
 export default new EventHandler();

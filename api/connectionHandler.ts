@@ -5,7 +5,8 @@ class ConnectionHandler {
     events = [
         'getPassports',
         'createPassport',
-        'removePassport'
+        'removePassport',
+        'getPassport'
     ];
 
     handle(socket: Socket) {

@@ -83,12 +83,14 @@ export default {
             const passportId = parseInt(scan, 10);
 
             if (Number.isNaN(passportId)) {
+                console.warn('Passport ID ' + passportId + 'is NaN!');
                 return;
             }
 
             const passport = await socketService.getPassport(passportId);
 
             if (!passport) {
+                console.warn('Passport with ID ' + passportId + ' not found!');
                 return;
             }
 
