@@ -82,6 +82,8 @@ export default {
 
             const passportId = parseInt(scan, 10);
 
+            console.log('Parsed ' + passportId);
+
             if (Number.isNaN(passportId)) {
                 console.warn('Passport ID ' + passportId + 'is NaN!');
                 return;
