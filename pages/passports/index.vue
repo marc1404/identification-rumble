@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="p-3">
         <section>
             <h1>Passports</h1>
 
@@ -15,7 +15,7 @@
                 <tbody>
                 <tr :key="passport.id" v-for="passport in passports">
                     <td>
-                        <nuxt-link :to="{ name: 'passports-id', params: { id: passport.id }}">
+                        <nuxt-link :to="{ name: 'passports-id', params: { id: passport.id }}" class="text-danger">
                             {{ passport.id }}
                         </nuxt-link>
                     </td>
@@ -49,7 +49,7 @@
                     </label>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-danger">Create</button>
             </form>
         </section>
     </div>

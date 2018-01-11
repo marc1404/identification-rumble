@@ -18,7 +18,7 @@
                 </aside>
 
             </div>
-            <div class="col-12 col-md-8 col-lg-10 p-3">
+            <div class="col-12 col-md-8 col-lg-10 p-0">
 
                 <article>
                     <nuxt />

@@ -1,5 +1,16 @@
 <template>
     <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-light rounded-0">
+                <li class="breadcrumb-item">
+                    <nuxt-link to="/passports" class="text-danger">Passports</nuxt-link>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Passport #{{ $route.params.id }}
+                </li>
+            </ol>
+        </nav>
+
         <canvas ref="canvas"></canvas>
     </div>
 </template>
