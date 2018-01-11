@@ -1,0 +1,5 @@
+api.identification-rumble.science {
+    proxy / localhost:3001 {
+        websocket
+    }
+}
