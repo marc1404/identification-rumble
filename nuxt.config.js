@@ -37,5 +37,6 @@ module.exports = {
     ],
     router: {
         linkActiveClass: 'active'
-    }
+    },
+    modules: [['@nuxtjs/google-analytics', { ua: 'UA-40279069-7' }]]
 };
