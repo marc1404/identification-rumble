@@ -22,7 +22,7 @@
         "flag-icon-css": "2.9.0",
         "forever": "0.15.3",
         "jsonfile": "4.0.0",
-        "nuxt": "1.0.0",
+        "nuxt": "1.1.0",
         "qrcode": "1.2.0",
         "socket.io": "2.0.4",
         "socket.io-client": "2.0.4",
