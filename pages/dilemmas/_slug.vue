@@ -25,18 +25,7 @@
             </section>
 
             <section>
-                <h1>Scanner</h1>
-
-                <div class="mb-3">
-                    <div :key="camera.id" class="form-check" v-for="camera in cameras">
-                        <input :id="camera.id" class="form-check-input" type="radio" name="cameraRadios" :value="camera" v-model="selectedCamera" :disabled="!selectedAnswer">
-                        <label :for="camera.id" class="form-check-label">
-                            {{ camera.name }}
-                        </label>
-                    </div>
-                </div>
-
-                <video ref="video"></video>
+                <scanner :active="!!selectedAnswer" @scan="handleScan" />
             </section>
         </div>
 
@@ -45,14 +34,15 @@
 
 <script>
 import dilemmaService from '../../src/dilemmaService';
+import scannerComponent from '~/components/scanner.vue';
 import registerComponent from '~/components/dilemmas/register.vue';
 import stayOnComponent from '~/components/dilemmas/stayOn.vue';
-import instascanService from '../../src/instascanService';
 import socketService from '../../src/socketService';
 
 export default {
     name: 'Dilemma',
     components: {
+        scanner: scannerComponent,
         register: registerComponent,
         stayOn: stayOnComponent
     },
@@ -68,9 +58,7 @@ export default {
         return {
             title: dilemma.name,
             dilemma: dilemma,
-            selectedCamera: null,
-            selectedAnswer: null,
-            cameras: []
+            selectedAnswer: null
         };
     },
     methods: {
@@ -101,40 +89,6 @@ export default {
                     this.selectedAnswer.label
                 }`
             );
-        }
-    },
-    async mounted() {
-        const { Scanner, Camera } = await instascanService.getInstascan();
-        const { video } = this.$refs;
-
-        this.scanner = new Scanner({ video: video });
-
-        this.scanner.addListener('scan', scan => {
-            this.handleScan(scan).catch(error => console.error(error));
-        });
-
-        this.cameras = await Camera.getCameras();
-
-        for (let i = 0; i < this.cameras.length; i++) {
-            const camera = this.cameras[i];
-
-            if (!camera.name) {
-                camera.name = 'Camera' + i;
-            }
-        }
-    },
-    beforeDestroy() {
-        this.scanner.stop().catch(error => console.error(error));
-
-        this.scanner = null;
-    },
-    watch: {
-        async selectedCamera(camera) {
-            await this.scanner.stop();
-
-            if (camera) {
-                this.scanner.start(camera);
-            }
         }
     }
 };

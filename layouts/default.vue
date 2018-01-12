@@ -42,8 +42,6 @@
 </template>
 
 <script>
-import socketService from '../src/socketService';
-
 export default {
     name: 'Layout',
     data() {
@@ -56,7 +54,12 @@ export default {
                     label: 'Passports',
                     icon: 'perm_contact_calendar'
                 },
-                { to: '/evaluation', label: 'Evaluation', icon: 'insert_chart' }
+                {
+                    to: '/evaluation',
+                    label: 'Evaluation',
+                    icon: 'insert_chart'
+                },
+                { to: '/language', label: 'Language', icon: 'translate' }
             ],
             footer: [
                 {

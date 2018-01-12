@@ -31,7 +31,10 @@ module.exports = {
         ],
         script: [{ src: '/instascan.min.js', async: true }]
     },
-    css: ['bootstrap/dist/css/bootstrap.css'],
+    css: [
+        'bootstrap/dist/css/bootstrap.css',
+        'flag-icon-css/css/flag-icon.css'
+    ],
     router: {
         linkActiveClass: 'active'
     }
