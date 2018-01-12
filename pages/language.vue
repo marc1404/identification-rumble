@@ -4,9 +4,9 @@
         <section class="mb-3">
             <h1>Language</h1>
 
-            <div class="form-check" v-for="language in languages">
-                <input :id="language.code" type="radio" name="languageRadios" class="form-check-input" :value="language" v-model="selectedLanguage">
-                <label :for="language.code" class="form-check-label">
+            <div class="custom-control custom-radio" v-for="language in languages">
+                <input :id="language.code" type="radio" name="languageRadios" class="custom-control-input" :value="language" v-model="selectedLanguage">
+                <label :for="language.code" class="custom-control-label">
                     <span :class="getFlagIcon(language)"></span>
                     {{ language.name }}
                 </label>

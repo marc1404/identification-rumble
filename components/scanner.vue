@@ -4,9 +4,9 @@
         <h1>Scanner</h1>
 
         <div class="mb-3">
-            <div :key="camera.id" class="form-check" v-for="camera in cameras">
-                <input :id="camera.id" class="form-check-input" type="radio" name="cameraRadios" :value="camera" v-model="selectedCamera" :disabled="!active">
-                <label :for="camera.id" class="form-check-label">
+            <div :key="camera.id" class="custom-control custom-radio" v-for="camera in cameras">
+                <input :id="camera.id" class="custom-control-input" type="radio" name="cameraRadios" :value="camera" v-model="selectedCamera" :disabled="!active">
+                <label :for="camera.id" class="custom-control-label">
                     {{ camera.name }}
                 </label>
             </div>

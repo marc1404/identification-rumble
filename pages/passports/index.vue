@@ -50,9 +50,9 @@
             <h2>Create Passport</h2>
 
             <form @submit.prevent="createPassport()">
-                <div class="form-check my-3">
-                    <input id="checkbox-jewish-ancestry" type="checkbox" class="form-check-input" v-model="hasJewishAncestry">
-                    <label for="checkbox-jewish-ancestry" class="form-check-label">
+                <div class="custom-control custom-checkbox my-3">
+                    <input id="checkbox-jewish-ancestry" type="checkbox" class="custom-control-input" v-model="hasJewishAncestry">
+                    <label for="checkbox-jewish-ancestry" class="custom-control-label">
                         Jewish ancestry
                     </label>
                 </div>

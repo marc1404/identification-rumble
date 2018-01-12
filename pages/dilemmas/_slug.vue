@@ -18,9 +18,9 @@
             <section class="mb-3">
                 <h1>Answers</h1>
 
-                <div class="form-check" v-for="answer in dilemma.answers">
-                    <input :id="getAnswerElementId(answer)" type="radio" name="answerRadios" class="form-check-input" :value="answer" v-model="selectedAnswer">
-                    <label :for="getAnswerElementId(answer)" class="form-check-label">{{ answer.label }}</label>
+                <div class="custom-control custom-radio" v-for="answer in dilemma.answers">
+                    <input :id="getAnswerElementId(answer)" type="radio" name="answerRadios" class="custom-control-input" :value="answer" v-model="selectedAnswer">
+                    <label :for="getAnswerElementId(answer)" class="custom-control-label">{{ answer.label }}</label>
                 </div>
             </section>
 
