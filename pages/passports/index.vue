@@ -16,7 +16,8 @@
                             {{ getNationalityText(passport) }}<br>
 
                             <strong class="pr-1">Language:</strong>
-                            <span class="flag-icon flag-icon-nl"></span> Nederlands
+                            <flag :countryCode="passport.languageCode" />
+                            {{ findLanguageByCode(passport.languageCode).name }}
                         </p>
                     </div>
                     <div class="card-body">
@@ -62,9 +63,14 @@
 <script>
 import socketService from '../../src/socketService';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import flagComponent from '~/components/flag.vue';
+import languageService from '../../src/languageService';
 
 export default {
     name: 'Passports',
+    components: {
+        flag: flagComponent
+    },
     head() {
         return {
             title: 'Passports'
@@ -106,6 +112,9 @@ export default {
         },
         getNationalityText(passport) {
             return passport.hasJewishAncestry ? 'Dutch Jewish' : 'Dutch';
+        },
+        findLanguageByCode(code) {
+            return languageService.findByCode(code);
         }
     },
     async mounted() {
