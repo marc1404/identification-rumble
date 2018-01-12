@@ -10,6 +10,7 @@
                     <th>Jewish Ancestry</th>
                     <th>Created</th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,8 +29,15 @@
                             {{ distanceInWordsToNow(passport.created) }} ago
                         </span>
                     </td>
-                    <td class="text-right">
-                        <a href="#" class="text-danger" @click.prevent="removePassport(passport)">
+                    <td>
+                        <a href="#" class="text-danger" @click.prevent="resetPassport(passport)" style="text-decoration: none">
+                            <i class="material-icons md-18 text-dark">restore</i>
+                            Reset
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="text-danger" @click.prevent="removePassport(passport)" style="text-decoration: none">
+                            <i class="material-icons md-18 text-dark">delete_forever</i>
                             Remove
                         </a>
                     </td>
@@ -85,6 +93,7 @@ export default {
 
             this.passports.push(passport);
         },
+        resetPassport(passport) {},
         removePassport(passport) {
             socketService
                 .removePassport(passport.id)
