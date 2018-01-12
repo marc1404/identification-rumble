@@ -1,9 +1,10 @@
 <template>
     <div class="p-3">
+
         <section>
             <h1>Passports</h1>
 
-            <table class="table table-responsive">
+            <table class="table table-responsive table-sm">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -32,13 +33,13 @@
                     <td>
                         <a href="#" class="text-danger" @click.prevent="resetPassport(passport)" style="text-decoration: none">
                             <i class="material-icons md-18 text-dark">restore</i>
-                            Reset
+                            <span class="d-none d-sm-inline">Reset</span>
                         </a>
                     </td>
                     <td>
                         <a href="#" class="text-danger" @click.prevent="removePassport(passport)" style="text-decoration: none">
                             <i class="material-icons md-18 text-dark">delete_forever</i>
-                            Remove
+                            <span class="d-none d-sm-inline">Remove</span>
                         </a>
                     </td>
                 </tr>
@@ -60,6 +61,7 @@
                 <button type="submit" class="btn btn-danger">Create</button>
             </form>
         </section>
+
     </div>
 </template>
 
