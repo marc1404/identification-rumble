@@ -1,50 +1,44 @@
 <template>
     <div class="p-3">
 
-        <section>
+        <section class="mb-3">
             <h1>Passports</h1>
 
-            <table class="table table-responsive table-sm">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Jewish Ancestry</th>
-                    <th>Created</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr :key="passport.id" v-for="passport in passports">
-                    <td>
-                        <nuxt-link :to="{ name: 'passports-id', params: { id: passport.id }}" class="text-danger">
-                            {{ passport.id }}
+            <div class="card-columns">
+
+                <div :key="passport.id" class="card" v-for="passport in passports">
+                    <h5 class="card-header">
+                        Passport #{{ passport.id }}
+                    </h5>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <strong>Nationality:</strong>
+                            {{ getNationalityText(passport) }}<br>
+
+                            <strong class="pr-1">Language:</strong>
+                            <span class="flag-icon flag-icon-nl"></span> Nederlands
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <nuxt-link :to="{ name: 'passports-id', params: { id: passport.id }}" class="card-link">
+                            <i class="material-icons md-18 text-dark pr-1">visibility</i>
+                            <span class="text-danger">Open</span>
                         </nuxt-link>
-                    </td>
-                    <td>
-                        <span v-if="passport.hasJewishAncestry">yes</span>
-                        <span v-else>no</span>
-                    </td>
-                    <td>
-                        <span :title="passport.created">
-                            {{ distanceInWordsToNow(passport.created) }} ago
-                        </span>
-                    </td>
-                    <td>
-                        <a href="#" class="text-danger" @click.prevent="resetPassport(passport)" style="text-decoration: none">
-                            <i class="material-icons md-18 text-dark">restore</i>
-                            <span class="d-none d-sm-inline">Reset</span>
+                        <a href="#" class="card-link" @click.prevent="resetPassport(passport)">
+                            <i class="material-icons md-18 text-dark pr-1">restore</i>
+                            <span class="text-danger">Reset</span>
                         </a>
-                    </td>
-                    <td>
-                        <a href="#" class="text-danger" @click.prevent="removePassport(passport)" style="text-decoration: none">
-                            <i class="material-icons md-18 text-dark">delete_forever</i>
-                            <span class="d-none d-sm-inline">Remove</span>
+                        <a href="#" class="card-link" @click.prevent="removePassport(passport)">
+                            <i class="material-icons md-18 text-dark pr-1">delete_forever</i>
+                            <span class="text-danger">Remove</span>
                         </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                    </div>
+                    <div class="card-footer text-muted">
+                        created {{ distanceInWordsToNow(passport.created) }} ago
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <section>
@@ -109,6 +103,9 @@ export default {
         },
         distanceInWordsToNow(date) {
             return distanceInWordsToNow(date);
+        },
+        getNationalityText(passport) {
+            return passport.hasJewishAncestry ? 'Dutch Jewish' : 'Dutch';
         }
     },
     async mounted() {
@@ -116,12 +113,3 @@ export default {
     }
 };
 </script>
-
-<style>
-table.table,
-table.table thead,
-table.table th,
-table.table th td {
-    border-top: none;
-}
-</style>
