@@ -1,15 +1,17 @@
 <template>
     <div class="p-3">
 
-        <div class="list-group d-inline-block">
+        <h1>Dilemmas</h1>
+
+        <nav class="nav flex-column lead">
             <nuxt-link
                     :key="dilemma.slug"
                     :to="{ name: 'dilemmas-slug', params: { slug: dilemma.slug }}"
                     v-for="dilemma in dilemmas"
-                    class="list-group-item list-group-item-action text-dark">
+                    class="nav-link text-danger">
                 {{ dilemma.name }}
-        </nuxt-link>
-        </div>
+            </nuxt-link>
+        </nav>
 
     </div>
 </template>

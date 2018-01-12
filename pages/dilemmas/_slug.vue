@@ -15,14 +15,31 @@
         <div class="p-3">
             <component :is="dilemma.componentName" />
 
-            <section class="mb-3">
-                <h1>Answers</h1>
+            <div class="row">
+                <div class="col-12 col-sm-6">
 
-                <div class="custom-control custom-radio" v-for="answer in dilemma.answers">
-                    <input :id="getAnswerElementId(answer)" type="radio" name="answerRadios" class="custom-control-input" :value="answer" v-model="selectedAnswer">
-                    <label :for="getAnswerElementId(answer)" class="custom-control-label">{{ answer.label }}</label>
+                    <section class="mb-3">
+                        <h1>Answers</h1>
+
+                        <div class="custom-control custom-radio" v-for="answer in dilemma.answers">
+                            <input :id="getAnswerElementId(answer)" type="radio" name="answerRadios" class="custom-control-input" :value="answer" v-model="selectedAnswer">
+                            <label :for="getAnswerElementId(answer)" class="custom-control-label">{{ answer.label }}</label>
+                        </div>
+                    </section>
+
                 </div>
-            </section>
+                <div class="col-12 col-sm-6 mb-3 mb-sm-0">
+
+                    <h1>Activity</h1>
+
+                    <samp>
+                        <span v-for="message in messages">
+                            {{ message }}<br>
+                        </span>
+                    </samp>
+
+                </div>
+            </div>
 
             <section>
                 <scanner :active="!!selectedAnswer" @passport="handlePassport" />
@@ -57,7 +74,8 @@ export default {
         return {
             title: dilemma.name,
             dilemma: dilemma,
-            selectedAnswer: null
+            selectedAnswer: null,
+            messages: []
         };
     },
     methods: {
@@ -65,7 +83,11 @@ export default {
             return 'answer-radio-' + answer.id;
         },
         handlePassport(passport) {
-            console.log(passport);
+            const message = `Passport #${passport.id} responded ${
+                this.selectedAnswer.label
+            } on ${this.dilemma.name}`;
+
+            this.messages.push(message);
         }
     }
 };
