@@ -25,7 +25,7 @@
             </section>
 
             <section>
-                <scanner :active="!!selectedAnswer" @scan="handleScan" />
+                <scanner :active="!!selectedAnswer" @passport="handlePassport" />
             </section>
         </div>
 
@@ -37,7 +37,6 @@ import dilemmaService from '../../src/dilemmaService';
 import scannerComponent from '~/components/scanner.vue';
 import registerComponent from '~/components/dilemmas/register.vue';
 import stayOnComponent from '~/components/dilemmas/stayOn.vue';
-import socketService from '../../src/socketService';
 
 export default {
     name: 'Dilemma',
@@ -65,30 +64,8 @@ export default {
         getAnswerElementId(answer) {
             return 'answer-radio-' + answer.id;
         },
-        async handleScan(scan) {
-            console.log(scan, typeof scan);
-
-            const passportId = parseInt(scan, 10);
-
-            console.log('Parsed ' + passportId);
-
-            if (Number.isNaN(passportId)) {
-                console.warn('Passport ID ' + passportId + 'is NaN!');
-                return;
-            }
-
-            const passport = await socketService.getPassport(passportId);
-
-            if (!passport) {
-                console.warn('Passport with ID ' + passportId + ' not found!');
-                return;
-            }
-
-            alert(
-                `Passport #${passport.id} scanned answer: ${
-                    this.selectedAnswer.label
-                }`
-            );
+        handlePassport(passport) {
+            console.log(passport);
         }
     }
 };

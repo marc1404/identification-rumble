@@ -43,6 +43,13 @@ class SocketService {
     getPassport(id) {
         return this.emit('getPassport', { id: id });
     }
+
+    changeLanguage(passportId, languageCode) {
+        return this.emit('changeLanguage', {
+            passportId: passportId,
+            languageCode: languageCode
+        });
+    }
 }
 
 export default new SocketService();

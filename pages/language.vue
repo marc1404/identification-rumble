@@ -14,7 +14,7 @@
         </section>
 
         <section>
-            <scanner :active="!!selectedLanguage" @scan="handleScan" />
+            <scanner :active="!!selectedLanguage" @passport="handlePassport" />
         </section>
 
     </div>
@@ -24,6 +24,7 @@
 import flagComponent from '~/components/flag.vue';
 import scannerComponent from '~/components/scanner.vue';
 import languageService from '../src/languageService';
+import socketService from '../src/socketService';
 
 export default {
     name: 'Language',
@@ -43,8 +44,11 @@ export default {
         };
     },
     methods: {
-        handleScan(scan) {
-            console.log(scan);
+        handlePassport(passport) {
+            socketService.changeLanguage(
+                passport.id,
+                this.selectedLanguage.code
+            );
         }
     }
 };

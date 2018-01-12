@@ -5,12 +5,33 @@ class PassportService {
     passports: Passport[] = [];
 
     constructor() {
-        this.passports = jsonfile.readFileSync('./passports.json', {
-            throws: false
-        }) as Passport[];
+        this.init();
+    }
 
-        if (!this.passports) {
-            this.passports = [];
+    init() {
+        const rawPassports = jsonfile.readFileSync('./passports.json', {
+            throws: false
+        });
+
+        if (!rawPassports) {
+            return;
+        }
+
+        for (const rawPassport of rawPassports) {
+            const {
+                id,
+                hasJewishAncestry,
+                created,
+                languageCode
+            } = rawPassport;
+            const passport = new Passport(
+                id,
+                hasJewishAncestry,
+                created,
+                languageCode
+            );
+
+            this.passports.push(passport);
         }
     }
 
@@ -59,7 +80,7 @@ class PassportService {
         });
     }
 
-    getPassport(id): Passport {
+    getPassport(id: number): Passport {
         for (const passport of this.passports) {
             if (passport.id === id) {
                 return passport;
@@ -67,6 +88,18 @@ class PassportService {
         }
 
         return null;
+    }
+
+    changeLanguage(id: number, languageCode: string): boolean {
+        const passport = this.getPassport(id);
+
+        if (!passport) {
+            return false;
+        }
+
+        passport.setLanguageCode(languageCode);
+
+        return true;
     }
 }
 

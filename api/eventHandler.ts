@@ -17,6 +17,10 @@ class EventHandler {
     async getPassport({ id }) {
         return passportService.getPassport(id);
     }
+
+    async changeLanguage({ passportId, languageCode }) {
+        return passportService.changeLanguage(passportId, languageCode);
+    }
 }
 
 export default new EventHandler();

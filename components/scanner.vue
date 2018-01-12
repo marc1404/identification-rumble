@@ -19,6 +19,7 @@
 
 <script>
 import instascanService from '../src/instascanService';
+import socketService from '../src/socketService';
 
 export default {
     name: 'Scanner',
@@ -41,8 +42,21 @@ export default {
 
         this.scanner = new Scanner({ video: video });
 
-        this.scanner.addListener('scan', scan => {
-            this.$emit('scan', scan);
+        this.scanner.addListener('scan', async scan => {
+            const passportId = parseInt(scan, 10);
+
+            if (Number.isNaN(passportId)) {
+                console.warn(`Scanned passport ID ${scan} is NaN!`);
+                return;
+            }
+
+            const passport = await socketService.getPassport(passportId);
+
+            if (!passport) {
+                console.warn(`Passport with ID ${passportId} not found!`);
+            }
+
+            this.$emit('passport', passport);
         });
 
         this.cameras = await Camera.getCameras();
