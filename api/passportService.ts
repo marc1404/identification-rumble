@@ -98,6 +98,7 @@ class PassportService {
         }
 
         passport.setLanguageCode(languageCode);
+        this.savePassports();
 
         return true;
     }
