@@ -55,6 +55,7 @@ import scannerComponent from '~/components/scanner.vue';
 import registerComponent from '~/components/dilemmas/register.vue';
 import signComponent from '~/components/dilemmas/sign.vue';
 import languageService from '../../src/languageService';
+import socketService from '../../src/socketService';
 
 export default {
     name: 'Dilemma',
@@ -94,6 +95,11 @@ export default {
         handlePassport(passport) {
             this.passport = passport;
             const { selectedAnswer, dilemma } = this;
+            const answerId = selectedAnswer.id;
+
+            if (answerId !== 0) {
+                socketService.answerDilemma(passport.id, dilemma.id);
+            }
 
             const message = this.generateMessage(
                 dilemma,

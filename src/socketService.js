@@ -50,6 +50,14 @@ class SocketService {
             languageCode: languageCode
         });
     }
+
+    answerDilemma(passportId, dilemmaId, answerId) {
+        return this.emit('answerDilemma', {
+            passportId: passportId,
+            dilemmaId: dilemmaId,
+            answerId: answerId
+        });
+    }
 }
 
 export default new SocketService();

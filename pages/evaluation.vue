@@ -2,7 +2,7 @@
     <div class="p-3">
 
         <h1>Evaluation Station</h1>
-        
+
         <p class="lead text-danger">Not implemented yet!</p>
 
         <scanner />

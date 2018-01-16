@@ -70,9 +70,15 @@ export default {
         }
     },
     beforeDestroy() {
-        this.scanner.stop().catch(error => console.error(error));
+        const { scanner } = this;
+
+        if (!scanner) {
+            return;
+        }
 
         this.scanner = null;
+
+        scanner.stop().catch(error => console.error(error));
     },
     watch: {
         async selectedCamera(camera) {

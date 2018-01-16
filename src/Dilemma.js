@@ -1,5 +1,6 @@
 export default class Dilemma {
-    constructor(slug, name, componentName, answers) {
+    constructor(id, slug, name, componentName, answers) {
+        this.id = id;
         this.slug = slug;
         this.name = name;
         this.componentName = componentName;
