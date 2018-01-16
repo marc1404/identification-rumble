@@ -8,8 +8,11 @@ module.exports = {
             process.env.API_HOST || 'https://api.identification-rumble.science'
     },
     head: {
-        title: 'Identification Rumble',
-        titleTemplate: '%s | Identification Rumble',
+        titleTemplate(titleChunk) {
+            return titleChunk
+                ? `${titleChunk} | Identification Rumble`
+                : 'Identification Rumble';
+        },
         meta: [
             { charset: 'utf-8' },
             {
