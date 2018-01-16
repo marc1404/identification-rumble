@@ -5,10 +5,15 @@ class DilemmaService {
     constructor() {
         this.dilemmas = [
             new Dilemma('register', 'Register?', 'register', [
-                new Answer(0, 'Yes'),
-                new Answer(1, 'No')
+                new Answer(0, 'Start'),
+                new Answer(1, 'Fill in the registration form'),
+                new Answer(2, 'Refuse to fill in the form')
             ]),
-            new Dilemma('stay-on', 'Stay on?', 'stayOn', [])
+            new Dilemma('sign', 'Sign?', 'sign', [
+                new Answer(0, 'Start'),
+                new Answer(1, 'Sign loyalty declaration'),
+                new Answer(2, 'Refuse & go into hiding')
+            ])
         ];
     }
 

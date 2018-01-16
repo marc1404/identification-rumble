@@ -1,6 +1,6 @@
 <template>
     <div class="p-3">
-        <p class="lead">Welcome!</p>
+        <img src="~/assets/quote.jpg" class="img-fluid rounded" />
     </div>
 </template>
 
