@@ -98,7 +98,9 @@ export default {
             const answerId = selectedAnswer.id;
 
             if (answerId !== 0) {
-                socketService.answerDilemma(passport.id, dilemma.id);
+                socketService
+                    .answerDilemma(passport.id, dilemma.id, answerId)
+                    .catch(error => console.error(error));
             }
 
             const message = this.generateMessage(
