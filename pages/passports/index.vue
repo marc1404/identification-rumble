@@ -17,7 +17,10 @@
 
                             <strong class="pr-1">Language:</strong>
                             <flag :countryCode="passport.languageCode" />
-                            {{ findLanguageByCode(passport.languageCode).name }}
+                            {{ findLanguageByCode(passport.languageCode).name }}<br>
+
+                            <strong>Answered dilemmas:</strong>
+                            {{ countAnsweredDilemmas(passport) }}
                         </p>
                     </div>
                     <div class="card-body">
@@ -121,6 +124,11 @@ export default {
         },
         async loadPassports() {
             this.passports = await socketService.getPassports();
+        },
+        countAnsweredDilemmas(passport) {
+            const { answerMap } = passport;
+
+            return Object.keys(answerMap || {}).length;
         }
     },
     mounted() {
