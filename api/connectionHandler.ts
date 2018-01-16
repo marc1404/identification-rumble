@@ -5,6 +5,7 @@ class ConnectionHandler {
     events = [
         'getPassports',
         'createPassport',
+        'resetPassport',
         'removePassport',
         'getPassport',
         'changeLanguage',

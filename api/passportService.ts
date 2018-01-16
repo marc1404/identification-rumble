@@ -22,13 +22,15 @@ class PassportService {
                 id,
                 hasJewishAncestry,
                 created,
-                languageCode
+                languageCode,
+                answerMap
             } = rawPassport;
             const passport = new Passport(
                 id,
                 hasJewishAncestry,
                 created,
-                languageCode
+                languageCode,
+                answerMap
             );
 
             this.passports.push(passport);
@@ -47,6 +49,19 @@ class PassportService {
         this.savePassports();
 
         return passport;
+    }
+
+    resetPassport(id: number): boolean {
+        const passport = this.getPassport(id);
+
+        if (!passport) {
+            return false;
+        }
+
+        passport.reset();
+        this.savePassports();
+
+        return false;
     }
 
     removePassport(id: number): boolean {
@@ -98,6 +113,23 @@ class PassportService {
         }
 
         passport.setLanguageCode(languageCode);
+        this.savePassports();
+
+        return true;
+    }
+
+    answerDilemma(
+        passportId: number,
+        dilemmaId: number,
+        answerId: number
+    ): boolean {
+        const passport = this.getPassport(passportId);
+
+        if (!passport) {
+            return false;
+        }
+
+        passport.answerDilemma(dilemmaId, answerId);
         this.savePassports();
 
         return true;

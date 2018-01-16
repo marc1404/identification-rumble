@@ -10,8 +10,12 @@ class EventHandler {
         return passportService.createPassport(hasJewishAncestry);
     }
 
+    async resetPassport({ id }) {
+        return passportService.resetPassport(id);
+    }
+
     async removePassport({ id }) {
-        passportService.removePassport(id);
+        return passportService.removePassport(id);
     }
 
     async getPassport({ id }) {
@@ -20,6 +24,10 @@ class EventHandler {
 
     async changeLanguage({ passportId, languageCode }) {
         return passportService.changeLanguage(passportId, languageCode);
+    }
+
+    async answerDilemma({ passportId, dilemmaId, answerId }) {
+        return passportService.answerDilemma(passportId, dilemmaId, answerId);
     }
 }
 
