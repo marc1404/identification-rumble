@@ -91,7 +91,9 @@ class PassportService {
 
     savePassports() {
         jsonfile.writeFile('./passports.json', this.passports, error => {
-            console.error(error);
+            if (error) {
+                console.error(error);
+            }
         });
     }
 

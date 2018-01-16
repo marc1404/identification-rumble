@@ -95,7 +95,10 @@ export default {
 
             this.passports.push(passport);
         },
-        resetPassport(passport) {},
+        async resetPassport(passport) {
+            await socketService.resetPassport(passport.id);
+            await this.loadPassports();
+        },
         removePassport(passport) {
             socketService
                 .removePassport(passport.id)
@@ -115,10 +118,13 @@ export default {
         },
         findLanguageByCode(code) {
             return languageService.findByCode(code);
+        },
+        async loadPassports() {
+            this.passports = await socketService.getPassports();
         }
     },
-    async mounted() {
-        this.passports = await socketService.getPassports();
+    mounted() {
+        this.loadPassports().catch(error => console.error(error));
     }
 };
 </script>

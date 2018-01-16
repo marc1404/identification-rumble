@@ -36,6 +36,10 @@ class SocketService {
         });
     }
 
+    resetPassport(id) {
+        return this.emit('resetPassport', { id: id });
+    }
+
     removePassport(id) {
         return this.emit('removePassport', { id: id });
     }
