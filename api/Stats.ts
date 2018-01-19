@@ -1,6 +1,6 @@
 export default class Stats {
-    dilemmas: Object = {};
-    languages: Object = {};
+    dilemmas: Object;
+    languages: Object;
 
     constructor(public dilemmas: Object = {}, public languages: Object = {}) {}
 
