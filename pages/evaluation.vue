@@ -12,6 +12,10 @@
 
             <pre>{{ passport.answerMap }}</pre>
 
+            <p class="lead">Stats</p>
+
+            <pre>{{ stats }}</pre>
+
         </div>
 
         <scanner @passport="handlePassport" />
@@ -21,6 +25,7 @@
 
 <script>
 import scannerComponent from '~/components/scanner.vue';
+import socketService from '../src/socketService';
 
 export default {
     name: 'Evaluation',
@@ -34,13 +39,17 @@ export default {
     },
     data() {
         return {
-            passport: null
+            passport: null,
+            stats: null
         };
     },
     methods: {
         handlePassport(passport) {
             this.passport = passport;
         }
+    },
+    async mounted() {
+        this.stats = await socketService.getStats();
     }
 };
 </script>
