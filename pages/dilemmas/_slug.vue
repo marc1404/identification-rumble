@@ -71,7 +71,7 @@ export default {
     },
     data() {
         const { slug } = this.$route.params;
-        const dilemma = dilemmaService.findBySlug(slug);
+        const dilemma = dilemmaService.findBySlug(slug) || {};
 
         return {
             title: dilemma.name,
