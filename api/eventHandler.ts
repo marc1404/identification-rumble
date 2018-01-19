@@ -1,5 +1,5 @@
 import passportService from './passportService';
-import dilemmaService from './dilemmaService';
+import statsService from './statsService';
 
 class EventHandler {
     async getPassports() {
@@ -28,6 +28,10 @@ class EventHandler {
 
     async answerDilemma({ passportId, dilemmaId, answerId }) {
         return passportService.answerDilemma(passportId, dilemmaId, answerId);
+    }
+
+    async getStats() {
+        return statsService.getStats();
     }
 }
 

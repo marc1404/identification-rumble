@@ -38,6 +38,10 @@ class StatsService {
             }
         });
     }
+
+    getStats(): Stats {
+        return this.stats;
+    }
 }
 
 export default new StatsService();

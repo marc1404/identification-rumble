@@ -62,6 +62,10 @@ class SocketService {
             answerId: answerId
         });
     }
+
+    getStats() {
+        return this.emit('getStats');
+    }
 }
 
 export default new SocketService();

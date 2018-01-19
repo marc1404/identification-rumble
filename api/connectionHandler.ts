@@ -9,7 +9,8 @@ class ConnectionHandler {
         'removePassport',
         'getPassport',
         'changeLanguage',
-        'answerDilemma'
+        'answerDilemma',
+        'getStats'
     ];
 
     handle(socket: Socket) {
