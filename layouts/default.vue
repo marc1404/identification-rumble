@@ -3,7 +3,7 @@
 
         <div class="d-flex flex-column" style="min-height: 100vh">
             <header class="bg-light p-2">
-                <img class="img-fluid" style="height: 50px" src="~/assets/logo-hq.png" alt="Identification Rumble">
+                <img class="img-fluid" style="max-height: 50px" src="~/assets/logo-hq.png" alt="Identification Rumble">
             </header>
 
             <div class="row m-0 flex-column flex-sm-row" style="flex: 1">
