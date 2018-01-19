@@ -65,3 +65,4 @@ typings/
 .nuxt/
 .DS_Store
 passports.json
+stats.json

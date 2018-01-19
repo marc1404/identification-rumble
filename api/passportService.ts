@@ -1,5 +1,6 @@
 import Passport from './Passport';
 import * as jsonfile from 'jsonfile';
+import statsService from './statsService';
 
 class PassportService {
     passports: Passport[] = [];
@@ -116,6 +117,7 @@ class PassportService {
 
         passport.setLanguageCode(languageCode);
         this.savePassports();
+        statsService.increaseLanguage(languageCode);
 
         return true;
     }
@@ -133,6 +135,7 @@ class PassportService {
 
         passport.answerDilemma(dilemmaId, answerId);
         this.savePassports();
+        statsService.increaseDilemmaAnswer(dilemmaId, answerId);
 
         return true;
     }
