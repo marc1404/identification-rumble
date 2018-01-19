@@ -4,11 +4,30 @@
 
             <h1>{{ text.heading }}</h1>
 
-            <p>{{ text.firstParagraph }}</p>
+            <div class="mb-3">
+                <div class="custom-control custom-radio">
+                    <input id="text-checkbox" type="radio" name="viewRadios" class="custom-control-input" value="text" v-model="view">
+                    <label for="text-checkbox" class="custom-control-label">Text</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input id="animation-checkbox" type="radio" name="viewRadios" class="custom-control-input" value="animation" v-model="view">
+                    <label for="animation-checkbox" class="custom-control-label">
+                        Animation
+                        <span class="badge badge-danger">work in progress</span>
+                    </label>
+                </div>
+            </div>
 
-            <p>{{ text.secondParagraph }}</p>
+            <template v-if="view === 'text'">
+                <p>{{ text.firstParagraph }}</p>
 
-            <p class="lead">{{ text.lead }}</p>
+                <p>{{ text.secondParagraph }}</p>
+
+                <p class="lead">{{ text.lead }}</p>
+            </template>
+            <template v-else-if="view === 'animation'">
+                <img src="~/assets/animation-mockup.jpeg" class="img-fluid rounded" />
+            </template>
 
         </div>
     </div>
@@ -22,6 +41,7 @@ export default {
     extends: dilemmaComponent,
     data() {
         return {
+            view: 'text',
             i18n: {
                 gb: {
                     heading: 'Registration and dismissal',
