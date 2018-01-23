@@ -5,6 +5,10 @@ export default {
             type: String,
             default: 'gb',
             required: false
+        },
+        onPassport: {
+            type: Array,
+            required: false
         }
     },
     computed: {

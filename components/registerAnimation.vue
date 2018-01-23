@@ -3,8 +3,18 @@
 </template>
 
 <script>
+const playerStates = {
+    PAUSED: 2
+};
+
 export default {
-    name: 'YouTubeVideo',
+    name: 'RegisterAnimation',
+    props: {
+        onPassport: {
+            type: Array,
+            required: true
+        }
+    },
     data() {
         return {
             player: null,
@@ -53,9 +63,18 @@ export default {
 
                 this.intervalTask = null;
             }
+        },
+        handlePassport() {
+            const playerState = this.player.getPlayerState();
+
+            if (playerState === playerStates.PAUSED) {
+                this.player.playVideo();
+            }
         }
     },
     mounted() {
+        this.onPassport.push(passport => this.handlePassport(passport));
+
         if (window.YT) {
             this.onYouTubeAPIReady();
             return;

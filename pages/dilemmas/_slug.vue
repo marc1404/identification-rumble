@@ -13,7 +13,7 @@
         </nav>
 
         <div class="p-3">
-            <component :is="dilemma.componentName" :languageCode="languageCode" />
+            <component :is="dilemma.componentName" :languageCode="languageCode" :onPassport="onPassport" />
 
             <section class="mb-3">
                 <h1>Answers</h1>
@@ -62,7 +62,8 @@ export default {
             dilemma: dilemma,
             selectedAnswer: null,
             passport: null,
-            cast: castService
+            cast: castService,
+            onPassport: []
         };
     },
     computed: {
@@ -79,6 +80,8 @@ export default {
         handlePassport(passport) {
             this.passport = passport;
             const { selectedAnswer, dilemma } = this;
+
+            this.onPassport.forEach(callback => callback(passport));
 
             if (!selectedAnswer) {
                 return;

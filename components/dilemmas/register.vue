@@ -27,7 +27,7 @@
                 </p>
             </template>
             <template v-else-if="view === 'animation'">
-                <you-tube-video />
+                <register-animation :onPassport="onPassport" />
             </template>
 
         </div>
@@ -36,14 +36,14 @@
 
 <script>
 import dilemmaComponent from '../dilemma';
-import youTubeVideoComponent from '../youTubeVideo';
+import registerAnimationComponent from '../registerAnimation';
 import castService from '~/src/castService';
 
 export default {
     name: 'Register',
     extends: dilemmaComponent,
     components: {
-        youTubeVideo: youTubeVideoComponent
+        registerAnimation: registerAnimationComponent
     },
     data() {
         return {
