@@ -6,6 +6,8 @@ class DilemmaService {
     }
 
     findById(id) {
+        id = Number.parseInt(id, 10);
+
         return this.findBy('id', id);
     }
 

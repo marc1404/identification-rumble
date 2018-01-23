@@ -4,11 +4,13 @@
 
             <h1>{{ text.heading }}</h1>
 
-            <p>{{ text.firstParagraph }}</p>
+            <p class="lead">{{ text.firstParagraph }}</p>
 
-            <p>{{ text.secondParagraph }}</p>
+            <p class="lead">{{ text.secondParagraph }}</p>
 
-            <p class="lead">{{ text.lead }}</p>
+            <p class="lead">
+                <strong>{{ text.lead }}</strong>
+            </p>
 
         </div>
     </div>
