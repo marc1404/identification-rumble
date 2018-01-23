@@ -6,8 +6,8 @@ class EventHandler {
         return passportService.getPassports();
     }
 
-    async createPassport({ hasJewishAncestry }) {
-        return passportService.createPassport(hasJewishAncestry);
+    async createPassport() {
+        return passportService.createPassport();
     }
 
     async resetPassport({ id }) {

@@ -30,10 +30,8 @@ class SocketService {
         return this.emit('getPassports');
     }
 
-    createPassport(hasJewishAncestry) {
-        return this.emit('createPassport', {
-            hasJewishAncestry: hasJewishAncestry
-        });
+    createPassport() {
+        return this.emit('createPassport');
     }
 
     resetPassport(id) {

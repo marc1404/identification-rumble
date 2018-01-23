@@ -19,20 +19,8 @@ class PassportService {
         }
 
         for (const rawPassport of rawPassports) {
-            const {
-                id,
-                hasJewishAncestry,
-                created,
-                languageCode,
-                answerMap
-            } = rawPassport;
-            const passport = new Passport(
-                id,
-                hasJewishAncestry,
-                created,
-                languageCode,
-                answerMap
-            );
+            const { id, created, languageCode, answerMap } = rawPassport;
+            const passport = new Passport(id, created, languageCode, answerMap);
 
             this.passports.push(passport);
         }
@@ -42,9 +30,9 @@ class PassportService {
         return this.passports;
     }
 
-    createPassport(hasJewishAncestry: boolean): Passport {
+    createPassport(): Passport {
         const id = this.getNextId();
-        const passport = new Passport(id, hasJewishAncestry, new Date());
+        const passport = new Passport(id, new Date());
 
         this.passports.push(passport);
         this.savePassports();

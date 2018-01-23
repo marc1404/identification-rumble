@@ -2,7 +2,10 @@
     <div class="p-3">
 
         <section class="mb-3">
-            <h1>Passports</h1>
+            <h1>
+                Passports
+                <button type="button" class="btn btn-danger btn-sm" @click="createPassport()">Create</button>
+            </h1>
 
             <div class="card-columns">
 
@@ -12,9 +15,6 @@
                     </h5>
                     <div class="card-body">
                         <p class="card-text">
-                            <strong>Nationality:</strong>
-                            {{ getNationalityText(passport) }}<br>
-
                             <strong class="pr-1">Language:</strong>
                             <flag :countryCode="passport.languageCode" />
                             {{ findLanguageByCode(passport.languageCode).name }}<br>
@@ -43,21 +43,6 @@
                 </div>
 
             </div>
-        </section>
-
-        <section>
-            <h2>Create Passport</h2>
-
-            <form @submit.prevent="createPassport()">
-                <div class="custom-control custom-checkbox my-3">
-                    <input id="checkbox-jewish-ancestry" type="checkbox" class="custom-control-input" v-model="hasJewishAncestry">
-                    <label for="checkbox-jewish-ancestry" class="custom-control-label">
-                        Jewish ancestry
-                    </label>
-                </div>
-
-                <button type="submit" class="btn btn-danger">Create</button>
-            </form>
         </section>
 
     </div>
@@ -115,9 +100,6 @@ export default {
         },
         distanceInWordsToNow(date) {
             return distanceInWordsToNow(date);
-        },
-        getNationalityText(passport) {
-            return passport.hasJewishAncestry ? 'Dutch Jewish' : 'Dutch';
         },
         findLanguageByCode(code) {
             return languageService.findByCode(code);
