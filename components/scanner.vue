@@ -5,7 +5,7 @@
 
         <div class="mb-3">
             <div :key="camera.id" class="custom-control custom-radio" v-for="camera in cameras">
-                <input :id="camera.id" class="custom-control-input" type="radio" name="cameraRadios" :value="camera" v-model="selectedCamera" :disabled="!active">
+                <input :id="camera.id" class="custom-control-input" type="radio" name="cameraRadios" :value="camera" v-model="selectedCamera">
                 <label :for="camera.id" class="custom-control-label">
                     {{ camera.name }}
                 </label>
@@ -23,12 +23,6 @@ import socketService from '../src/socketService';
 
 export default {
     name: 'Scanner',
-    props: {
-        active: {
-            type: Boolean,
-            default: true
-        }
-    },
     data() {
         return {
             selectedCamera: null,
@@ -66,6 +60,10 @@ export default {
 
             if (!camera.name) {
                 camera.name = 'Camera' + i;
+            }
+
+            if (!this.selectedCamera) {
+                this.selectedCamera = camera;
             }
         }
     },

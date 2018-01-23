@@ -42,7 +42,7 @@
             </div>
 
             <section>
-                <scanner :active="!!selectedAnswer" @passport="handlePassport" />
+                <scanner @passport="handlePassport" />
             </section>
         </div>
 

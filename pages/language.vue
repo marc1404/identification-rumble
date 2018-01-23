@@ -31,7 +31,7 @@
         </div>
 
         <section>
-            <scanner :active="!!selectedLanguage" @passport="handlePassport" />
+            <scanner @passport="handlePassport" />
         </section>
 
     </div>
