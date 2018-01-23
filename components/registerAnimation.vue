@@ -33,7 +33,7 @@ export default {
             this.player = new YT.Player('youtube-video', {
                 videoId: 'XfZyBC-Wxfg',
                 playerVars: {
-                    controls: 1,
+                    controls: 0,
                     autoplay: 0,
                     modestbranding: 1,
                     disablekb: 1,
