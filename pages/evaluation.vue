@@ -38,7 +38,7 @@
                     A total of <strong>{{ totalVisitors }} </strong> people visited the museum.
                 </p>
 
-                <div style="width: 30rem">
+                <div style="width: 20rem">
                     <language-chart :languages="stats.languages" v-if="stats" />
                 </div>
             </section>
