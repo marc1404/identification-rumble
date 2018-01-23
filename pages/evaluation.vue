@@ -55,6 +55,10 @@ export default {
     },
     async mounted() {
         this.stats = await socketService.getStats();
+        this.totalVisitors = Object.values(this.stats.languages).reduce(
+            (sum, dates) => sum + dates.length,
+            0
+        );
     }
 };
 </script>
