@@ -20,6 +20,7 @@
 <script>
 import instascanService from '../src/instascanService';
 import socketService from '../src/socketService';
+import notificationService from '~/src/notificationService';
 
 export default {
     name: 'Scanner',
@@ -53,8 +54,9 @@ export default {
                 console.warn(`Passport with ID ${passportId} not found!`);
             }
 
-            this.$emit('passport', passport);
             this.beep.play().catch(error => console.error(error));
+            notificationService.success('Passport scanned!');
+            this.$emit('passport', passport);
         });
 
         this.cameras = await Camera.getCameras();

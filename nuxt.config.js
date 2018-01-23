@@ -36,7 +36,9 @@ module.exports = {
     },
     css: [
         'bootstrap/dist/css/bootstrap.css',
-        'flag-icon-css/css/flag-icon.css'
+        'flag-icon-css/css/flag-icon.css',
+        'noty/lib/noty.css',
+        'noty/lib/themes/bootstrap-v4.css'
     ],
     router: {
         linkActiveClass: 'active'

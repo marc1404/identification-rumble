@@ -23,8 +23,8 @@ export default {
             this.player = new YT.Player('youtube-video', {
                 videoId: 'XfZyBC-Wxfg',
                 playerVars: {
-                    controls: 0,
-                    autoplay: 1,
+                    controls: 1,
+                    autoplay: 0,
                     modestbranding: 1,
                     disablekb: 1,
                     enablejsapi: 1,
@@ -56,6 +56,11 @@ export default {
         }
     },
     mounted() {
+        if (window.YT) {
+            this.onYouTubeAPIReady();
+            return;
+        }
+
         window.onYouTubePlayerAPIReady = () => this.onYouTubeAPIReady();
         const scriptTag = document.createElement('script');
         scriptTag.src = 'https://www.youtube.com/player_api';
