@@ -4,7 +4,7 @@
 
             <h1>{{ text.heading }}</h1>
 
-            <div class="mb-3">
+            <div class="mb-3" v-show="!cast.isActive">
                 <div class="custom-control custom-radio">
                     <input id="text-checkbox" type="radio" name="viewRadios" class="custom-control-input" value="text" v-model="view">
                     <label for="text-checkbox" class="custom-control-label">Text</label>
@@ -13,20 +13,21 @@
                     <input id="animation-checkbox" type="radio" name="viewRadios" class="custom-control-input" value="animation" v-model="view">
                     <label for="animation-checkbox" class="custom-control-label">
                         Animation
-                        <span class="badge badge-danger">work in progress</span>
                     </label>
                 </div>
             </div>
 
             <template v-if="view === 'text'">
-                <p>{{ text.firstParagraph }}</p>
+                <p class="lead">{{ text.firstParagraph }}</p>
 
-                <p>{{ text.secondParagraph }}</p>
+                <p class="lead">{{ text.secondParagraph }}</p>
 
-                <p class="lead">{{ text.lead }}</p>
+                <p class="lead">
+                    <strong>{{ text.lead }}</strong>
+                </p>
             </template>
             <template v-else-if="view === 'animation'">
-                <img src="~/assets/animation-mockup.jpeg" class="img-fluid rounded" />
+                <you-tube-video />
             </template>
 
         </div>
@@ -35,12 +36,18 @@
 
 <script>
 import dilemmaComponent from '../dilemma';
+import youTubeVideoComponent from '../youTubeVideo';
+import castService from '~/src/castService';
 
 export default {
     name: 'Register',
     extends: dilemmaComponent,
+    components: {
+        youTubeVideo: youTubeVideoComponent
+    },
     data() {
         return {
+            cast: castService,
             view: 'text',
             i18n: {
                 gb: {

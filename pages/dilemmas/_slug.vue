@@ -15,31 +15,14 @@
         <div class="p-3">
             <component :is="dilemma.componentName" :languageCode="languageCode" />
 
-            <div class="row">
-                <div class="col-12 col-sm-6">
+            <section class="mb-3">
+                <h1>Answers</h1>
 
-                    <section class="mb-3">
-                        <h1>Answers</h1>
-
-                        <div class="custom-control custom-radio" :class="{ 'mb-3': answer.id === 0 }" v-for="answer in dilemma.answers">
-                            <input :id="getAnswerElementId(answer)" type="radio" name="answerRadios" class="custom-control-input" :value="answer" v-model="selectedAnswer">
-                            <label :for="getAnswerElementId(answer)" class="custom-control-label">{{ answer.label }}</label>
-                        </div>
-                    </section>
-
+                <div class="custom-control custom-radio" v-for="answer in dilemma.answers">
+                    <input :id="getAnswerElementId(answer)" type="radio" name="answerRadios" class="custom-control-input" :value="answer" v-model="selectedAnswer">
+                    <label :for="getAnswerElementId(answer)" class="custom-control-label">{{ answer.label }}</label>
                 </div>
-                <div class="col-12 col-sm-6 mb-3 mb-sm-0">
-
-                    <h1>Activity</h1>
-
-                    <samp>
-                        <span v-for="message in messages">
-                            {{ message }}<br>
-                        </span>
-                    </samp>
-
-                </div>
-            </div>
+            </section>
 
             <section>
                 <scanner @passport="handlePassport" />
@@ -78,7 +61,6 @@ export default {
             title: dilemma.name,
             dilemma: dilemma,
             selectedAnswer: null,
-            messages: [],
             passport: null,
             cast: castService
         };
@@ -97,36 +79,16 @@ export default {
         handlePassport(passport) {
             this.passport = passport;
             const { selectedAnswer, dilemma } = this;
+
+            if (!selectedAnswer) {
+                return;
+            }
+
             const answerId = selectedAnswer.id;
 
-            if (answerId !== 0) {
-                socketService
-                    .answerDilemma(passport.id, dilemma.id, answerId)
-                    .catch(error => console.error(error));
-            }
-
-            const message = this.generateMessage(
-                dilemma,
-                selectedAnswer,
-                passport
-            );
-
-            this.messages.push(message);
-        },
-        generateMessage(dilemma, answer, passport) {
-            if (answer.id === 0) {
-                const language = languageService.findByCode(
-                    passport.languageCode
-                );
-
-                return `Passport #${passport.id} started ${dilemma.name} in ${
-                    language.name
-                }`;
-            }
-
-            return `Passport #${passport.id} responded '${answer.label}' on ${
-                dilemma.name
-            }`;
+            socketService
+                .answerDilemma(passport.id, dilemma.id, answerId)
+                .catch(error => console.error(error));
         }
     }
 };

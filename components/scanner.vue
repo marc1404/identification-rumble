@@ -27,10 +27,13 @@ export default {
         return {
             selectedCamera: null,
             cameras: [],
-            scanner: null
+            scanner: null,
+            beep: null
         };
     },
     async mounted() {
+        this.beep = new Audio('/beep.mp3');
+        this.beep.volume = 0.2;
         const { Scanner, Camera } = await instascanService.getInstascan();
         const { video } = this.$refs;
 
@@ -51,6 +54,7 @@ export default {
             }
 
             this.$emit('passport', passport);
+            this.beep.play().catch(error => console.error(error));
         });
 
         this.cameras = await Camera.getCameras();
