@@ -48,18 +48,18 @@ export default {
         return {
             aside: [
                 { to: '/', label: 'Home', icon: 'home', exact: true },
-                { to: '/dilemmas', label: 'Dilemmas', icon: 'report_problem' },
                 {
                     to: '/passports',
                     label: 'Passports',
                     icon: 'perm_contact_calendar'
                 },
+                { to: '/language', label: 'Language', icon: 'translate' },
+                { to: '/dilemmas', label: 'Dilemmas', icon: 'report_problem' },
                 {
                     to: '/evaluation',
                     label: 'Evaluation',
                     icon: 'insert_chart'
-                },
-                { to: '/language', label: 'Language', icon: 'translate' }
+                }
             ],
             footer: [
                 {
