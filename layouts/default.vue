@@ -1,13 +1,17 @@
 <template>
     <div>
 
+        <button type="button" class="btn btn-light btn-sm btn-cast" :class="{ active: cast.isActive }" @click="cast.toggle()">
+            <i class="material-icons">{{ castIcon }}</i>
+        </button>
+
         <div class="d-flex flex-column" style="min-height: 100vh">
-            <header class="bg-light p-2">
+            <header class="bg-light p-2" v-show="!cast.isActive">
                 <img class="img-fluid" style="max-height: 50px" src="~/assets/logo-hq.png" alt="Identification Rumble">
             </header>
 
             <div class="row m-0 flex-column flex-sm-row" style="flex: 1">
-                <div class="col-12 col-md-4 col-lg-2 d-flex p-0">
+                <div class="col-12 col-md-4 col-lg-2 d-flex p-0" v-if="!cast.isActive">
 
                     <aside class="bg-light w-100">
                         <nav class="nav nav-pills flex-column">
@@ -19,7 +23,7 @@
                     </aside>
 
                 </div>
-                <div class="col-12 col-md-8 col-lg-10 p-0">
+                <div class="col-12 p-0" :class="contentColumnClasses">
 
                     <article>
                         <nuxt />
@@ -29,7 +33,7 @@
             </div>
         </div>
 
-        <footer class="bg-light py-1">
+        <footer class="bg-light py-1" v-show="!cast.isActive">
             <nav class="nav nav-fill flex-column flex-md-row">
                 <a rel="noopener" :href="link.href" class="nav-item nav-link text-left text-md-center" v-for="link in footer">
                     <i class="material-icons md-18 text-dark pr-1">{{ link.icon }}</i>
@@ -42,10 +46,13 @@
 </template>
 
 <script>
+import castService from '~/src/castService';
+
 export default {
     name: 'Layout',
     data() {
         return {
+            cast: castService,
             aside: [
                 { to: '/', label: 'Home', icon: 'home', exact: true },
                 {
@@ -94,6 +101,14 @@ export default {
                 }
             ]
         };
+    },
+    computed: {
+        castIcon() {
+            return this.cast.isActive ? 'cast_connected' : 'cast';
+        },
+        contentColumnClasses() {
+            return this.cast.isActive ? '' : 'col-md-8 col-lg-10';
+        }
     }
 };
 </script>
@@ -135,5 +150,12 @@ body {
     .h1-responsive {
         font-size: 2rem;
     }
+}
+
+.btn-cast {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 42000;
 }
 </style>

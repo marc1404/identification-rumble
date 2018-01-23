@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb" v-show="!cast.isActive">
             <ol class="breadcrumb bg-light rounded-0 mb-0">
                 <li class="breadcrumb-item">
                     <nuxt-link to="/dilemmas" class="text-danger">Dilemmas</nuxt-link>
@@ -56,6 +56,7 @@ import registerComponent from '~/components/dilemmas/register.vue';
 import signComponent from '~/components/dilemmas/sign.vue';
 import languageService from '../../src/languageService';
 import socketService from '../../src/socketService';
+import castService from '~/src/castService';
 
 export default {
     name: 'Dilemma',
@@ -78,7 +79,8 @@ export default {
             dilemma: dilemma,
             selectedAnswer: null,
             messages: [],
-            passport: null
+            passport: null,
+            cast: castService
         };
     },
     computed: {
