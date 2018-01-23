@@ -6,7 +6,7 @@
         </button>
 
         <div class="d-flex flex-column" style="min-height: 100vh">
-            <header class="bg-light p-2" v-show="!cast.isActive">
+            <header class="bg-light p-2" style="padding-right: 50px !important" v-show="!cast.isActive">
                 <img class="img-fluid" style="max-height: 50px" src="~/assets/logo-hq.png" alt="Identification Rumble">
             </header>
 
