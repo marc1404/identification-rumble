@@ -1,11 +1,10 @@
 <template>
     <div style="width: 200px; height: 200px">
-        <canvas ref="canvas" width="200" height="200"></canvas>
+        <div ref="chart" class="ct-chart ct-square"></div>
     </div>
 </template>
 
 <script>
-import Chart from 'chart.js';
 import languageService from '~/src/languageService';
 
 export default {
@@ -16,38 +15,29 @@ export default {
             required: true
         }
     },
-    mounted() {
-        const { languages } = this;
-        const data = [];
-        const labels = [];
-        const chartOptions = {
-            type: 'pie',
-            data: {
-                datasets: [
-                    {
-                        data: data,
-                        backgroundColor: [
-                            '#003049',
-                            '#D62828',
-                            '#F77F00',
-                            '#FCBF49',
-                            '#EAE2B7'
-                        ]
-                    }
-                ],
-                labels: labels
+    methods: {
+        createChart(Chartist) {
+            const { languages } = this;
+            const data = {
+                series: [],
+                labels: []
+            };
+            const languageEntries = Object.entries(languages);
+
+            for (const [languageCode, dates] of languageEntries) {
+                const language = languageService.findByCode(languageCode);
+
+                data.series.push(dates.length);
+                data.labels.push(language.name);
             }
-        };
-        const languageEntries = Object.entries(languages);
 
-        for (const [languageCode, dates] of languageEntries) {
-            const language = languageService.findByCode(languageCode);
-
-            data.push(dates.length);
-            labels.push(language.name);
+            new Chartist.Pie(this.$refs.chart, data);
         }
-
-        new Chart(this.$refs.canvas, chartOptions);
+    },
+    mounted() {
+        import('chartist')
+            .then(Chartist => this.createChart(Chartist))
+            .catch(error => console.error(error));
     }
 };
 </script>
