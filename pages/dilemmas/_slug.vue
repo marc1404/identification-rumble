@@ -25,7 +25,7 @@
             </section>
 
             <section>
-                <scanner @passport="handlePassport" />
+                <scanner @passport="handlePassport" @answerId="handleAnswerId" />
             </section>
         </div>
 
@@ -37,7 +37,6 @@ import dilemmaService from '../../src/dilemmaService';
 import scannerComponent from '~/components/scanner/scanner.vue';
 import registerComponent from '~/components/dilemmas/register.vue';
 import signComponent from '~/components/dilemmas/sign.vue';
-import languageService from '../../src/languageService';
 import socketService from '../../src/socketService';
 import castService from '~/src/castService';
 
@@ -92,6 +91,13 @@ export default {
             socketService
                 .answerDilemma(passport.id, dilemma.id, answerId)
                 .catch(error => console.error(error));
+        },
+        handleAnswerId(answerId) {
+            const answer = this.dilemma.findAnswerById(answerId);
+
+            if (answer) {
+                this.selectedAnswer = answer;
+            }
         }
     }
 };

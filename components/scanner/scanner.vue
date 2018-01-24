@@ -41,6 +41,17 @@ export default {
     },
     methods: {
         async handlePassportId(rawId) {
+            rawId = '' + rawId;
+            const hasAnswer = rawId.includes('_');
+
+            if (hasAnswer) {
+                const [head, tail] = rawId.split('_');
+                rawId = head;
+                const answerId = parseInt(tail, 10);
+
+                this.$emit('answerId', answerId);
+            }
+
             const passportId = parseInt(rawId, 10);
 
             if (Number.isNaN(passportId)) {
