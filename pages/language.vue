@@ -22,7 +22,7 @@
 
 <script>
 import flagComponent from '~/components/flag.vue';
-import scannerComponent from '~/components/scanner.vue';
+import scannerComponent from '~/components/scanner/scanner.vue';
 import languageService from '../src/languageService';
 import socketService from '../src/socketService';
 

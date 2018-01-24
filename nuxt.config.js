@@ -32,7 +32,11 @@ module.exports = {
                 href: 'https://fonts.googleapis.com/icon?family=Material+Icons'
             }
         ],
-        script: [{ src: '/instascan.min.js', async: true }]
+        script: [
+            { src: '/instascan.min.js', async: true },
+            { src: '/sha256.js' },
+            { src: '/jphidgets22.1.0.0.min.js' }
+        ]
     },
     css: [
         'bootstrap/dist/css/bootstrap.css',

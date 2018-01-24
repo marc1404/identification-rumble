@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import scannerComponent from '~/components/scanner.vue';
+import scannerComponent from '~/components/scanner/scanner.vue';
 import socketService from '~/src/socketService';
 import dilemmaService from '~/src/dilemmaService';
 import languageChartComponent from '~/components/languageChart.vue';

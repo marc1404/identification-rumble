@@ -34,7 +34,7 @@
 
 <script>
 import dilemmaService from '../../src/dilemmaService';
-import scannerComponent from '~/components/scanner.vue';
+import scannerComponent from '~/components/scanner/scanner.vue';
 import registerComponent from '~/components/dilemmas/register.vue';
 import signComponent from '~/components/dilemmas/sign.vue';
 import languageService from '../../src/languageService';
