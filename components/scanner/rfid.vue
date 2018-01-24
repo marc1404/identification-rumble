@@ -15,7 +15,7 @@
                 {{ mapping.name }}
                 <code>{{ tag }}</code>
             </label>
-            <input :id="tag" type="text" class="form-control" v-model="mapping.passportId">
+            <input :id="tag" type="number" min="0" step="1" class="form-control text-center" style="width: 10rem" v-model="mapping.passportId">
         </div>
 
     </div>
