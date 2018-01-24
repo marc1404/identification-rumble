@@ -15,8 +15,13 @@
         <div class="p-3">
             <component :is="dilemma.componentName" :languageCode="languageCode" :onPassport="onPassport" />
 
-            <section class="mb-3">
-                <h1>Answers</h1>
+            <section class="mb-3" v-if="!areAnswersHidden">
+                <h1>
+                    Answers
+                    <button type="button" class="btn btn-light btn-sm" title="Hide answers" @click="hideAnswers">
+                        <i class="material-icons">close</i>
+                    </button>
+                </h1>
 
                 <div class="custom-control custom-radio" v-for="answer in dilemma.answers">
                     <input :id="getAnswerElementId(answer)" type="radio" name="answerRadios" class="custom-control-input" :value="answer" v-model="selectedAnswer">
@@ -62,7 +67,8 @@ export default {
             selectedAnswer: null,
             passport: null,
             cast: castService,
-            onPassport: []
+            onPassport: [],
+            areAnswersHidden: false
         };
     },
     computed: {
@@ -98,6 +104,9 @@ export default {
             if (answer) {
                 this.selectedAnswer = answer;
             }
+        },
+        hideAnswers() {
+            this.areAnswersHidden = true;
         }
     }
 };
