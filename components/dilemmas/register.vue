@@ -38,6 +38,7 @@
 import dilemmaComponent from '../dilemma';
 import registerAnimationComponent from '../registerAnimation';
 import castService from '~/src/castService';
+import hotkeysService from '~/src/hotkeysService';
 
 export default {
     name: 'Register',
@@ -48,7 +49,7 @@ export default {
     data() {
         return {
             cast: castService,
-            view: 'text',
+            view: 'animation',
             i18n: {
                 gb: {
                     heading: 'Registration and dismissal',
@@ -89,6 +90,14 @@ export default {
                 }
             }
         };
+    },
+    mounted() {
+        const changeView = () => {
+            this.view = this.view === 'animation' ? 'text' : 'animation';
+        };
+
+        hotkeysService.onUp(changeView);
+        hotkeysService.onDown(changeView);
     }
 };
 </script>
