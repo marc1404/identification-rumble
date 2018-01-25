@@ -13,8 +13,8 @@ class PresetService {
             return;
         }
 
-        this.scannerMode = localStorage.getItem('scannerMode');
-        this.hiddenAnswers = localStorage.getItem('hiddenAnswers');
+        this.scannerMode = localStorage.getItem('scannerMode') || null;
+        this.hiddenAnswers = localStorage.getItem('hiddenAnswers') || false;
 
         const identificationRumble = (window.__IDENTIFICATION_RUMBLE__ =
             window.__IDENTIFICATION_RUMBLE__ || {});
@@ -22,13 +22,13 @@ class PresetService {
         identificationRumble.setScannerMode = scannerMode => {
             this.scannerMode = scannerMode;
 
-            localStorage.setItem('scannerMode', scannerMode);
+            this.persist('scannerMode', scannerMode);
         };
 
         identificationRumble.setHiddenAnswers = hiddenAnswers => {
             this.hiddenAnswers = hiddenAnswers;
 
-            localStorage.setItem('hiddenAnswers', hiddenAnswers);
+            this.persist('hiddenAnswers', hiddenAnswers);
         };
     }
 
@@ -38,6 +38,15 @@ class PresetService {
 
     getHiddenAnswers() {
         return this.hiddenAnswers;
+    }
+
+    persist(key, value) {
+        if (value) {
+            localStorage.setItem(key, value);
+            return;
+        }
+
+        localStorage.removeItem(key);
     }
 
     getWindow() {

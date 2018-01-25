@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <component :is="mode" :cast="cast" @passportId="handlePassportId" />
+        <component :is="mode" :cast="cast" @passportId="handlePassportId" v-if="mode" />
 
     </div>
 </template>
