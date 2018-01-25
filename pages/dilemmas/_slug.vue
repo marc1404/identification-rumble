@@ -44,6 +44,7 @@ import registerComponent from '~/components/dilemmas/register.vue';
 import signComponent from '~/components/dilemmas/sign.vue';
 import socketService from '../../src/socketService';
 import castService from '~/src/castService';
+import presetService from '~/src/presetService';
 
 export default {
     name: 'Dilemma',
@@ -68,7 +69,7 @@ export default {
             passport: null,
             cast: castService,
             onPassport: [],
-            areAnswersHidden: false
+            areAnswersHidden: true
         };
     },
     computed: {
@@ -108,6 +109,9 @@ export default {
         hideAnswers() {
             this.areAnswersHidden = true;
         }
+    },
+    mounted() {
+        this.areAnswersHidden = presetService.getHiddenAnswers();
     }
 };
 </script>

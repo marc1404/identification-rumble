@@ -25,6 +25,7 @@ import rfidComponent from './rfid';
 import castService from '~/src/castService';
 import notificationService from '~/src/notificationService';
 import socketService from '~/src/socketService';
+import presetService from '~/src/presetService';
 
 export default {
     name: 'Scanner',
@@ -72,6 +73,7 @@ export default {
         }
     },
     mounted() {
+        this.mode = presetService.getScannerMode();
         this.beep = new Audio('/beep.mp3');
         this.beep.volume = 0.2;
     }
