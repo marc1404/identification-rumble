@@ -31,9 +31,9 @@ export default {
         onYouTubeAPIReady() {
             const { YT } = window;
             this.player = new YT.Player('youtube-video', {
-                videoId: 'XfZyBC-Wxfg',
+                videoId: 'N3FjLWUuDWU',
                 playerVars: {
-                    controls: 0,
+                    controls: 1,
                     autoplay: 0,
                     modestbranding: 1,
                     disablekb: 1,
@@ -48,7 +48,7 @@ export default {
             });
         },
         checkVideoTime(time) {
-            if (time < 83) {
+            if (time < 94) {
                 return;
             }
 
@@ -65,6 +65,10 @@ export default {
             }
         },
         handlePassport() {
+            if (!this.player.getPlayerState) {
+                return;
+            }
+
             const playerState = this.player.getPlayerState();
 
             if (playerState === playerStates.PAUSED) {
