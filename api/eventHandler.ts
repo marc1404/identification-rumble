@@ -1,5 +1,6 @@
 import passportService from './passportService';
 import statsService from './statsService';
+import settingsService from './settingsService';
 
 class EventHandler {
     async getPassports() {
@@ -33,6 +34,12 @@ class EventHandler {
     async getStats() {
         return statsService.getStats();
     }
+
+    async setReadOnlyMode({ enabled }) {}
+
+    async getTagMapping() {}
+
+    async setTagMapping({ tag, value }) {}
 }
 
 export default new EventHandler();

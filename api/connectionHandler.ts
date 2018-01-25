@@ -10,7 +10,10 @@ class ConnectionHandler {
         'getPassport',
         'changeLanguage',
         'answerDilemma',
-        'getStats'
+        'getStats',
+        'setReadOnlyMode',
+        'getTagMapping',
+        'setTagMapping'
     ];
 
     handle(socket: Socket) {
