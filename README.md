@@ -9,18 +9,18 @@
 
 [University of Amsterdam:](http://www.uva.nl/en/home)
 
-* Gokie Wiegers
-* Jerom Fernig
-* Maaike Koolbergen
-* Marc Vornetran
+* [Gokie Wiegers](mailto:gokie.wiegers@gmail.com)
+* [Jerom Fernig](http://www.clearfieldssix.nl/profile/jerom-fernig/)
+* [Maaike Koolbergen](mailto:maaikekoolbergen@gmail.com)
+* [Marc Vornetran](https://marc.vornetran.de)
 
 [Mediacollege Amsterdam:](https://www.ma-web.nl/)
 
-* Danilo Beumans
-* Djanco Dewus
-* Gideo Buijs
-* Keelan Maclear
-* Stefan Vermeulen
+* [Danilo Beumans](http://danilobeumans.com/)
+* [Djanco Dewus](http://20554.hosts.ma-cloud.nl/)
+* [Gideon Buijs](http://gideonbuijs.com/)
+* [Keelan Maclear](http://www.maclear.nl/)
+* [Stefan Vermeulen](http://stefanverm.nl/)
 
 ## License
 
