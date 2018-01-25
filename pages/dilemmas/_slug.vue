@@ -18,7 +18,7 @@
             <section class="mb-3" v-if="!areAnswersHidden || dilemma.id !== 0">
                 <h1>
                     Answers
-                    <button type="button" class="btn btn-light btn-sm" title="Hide answers" @click="hideAnswers">
+                    <button type="button" class="btn btn-light btn-sm" title="Hide answers" @click="hideAnswers" v-if="!areAnswersHidden">
                         <i class="material-icons">close</i>
                     </button>
                 </h1>
