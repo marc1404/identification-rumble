@@ -18,7 +18,9 @@ export default {
     data() {
         return {
             player: null,
-            intervalTask: null
+            intervalTask: null,
+            lastPassportId: null,
+            hasPaused: false
         };
     },
     methods: {
@@ -33,7 +35,7 @@ export default {
             this.player = new YT.Player('youtube-video', {
                 videoId: 'N3FjLWUuDWU',
                 playerVars: {
-                    controls: 1,
+                    controls: 0,
                     autoplay: 0,
                     modestbranding: 1,
                     disablekb: 1,
@@ -48,23 +50,28 @@ export default {
             });
         },
         checkVideoTime(time) {
-            if (time < 94) {
+            const shouldDoNothing = this.hasPaused || time < 94;
+
+            if (shouldDoNothing) {
                 return;
             }
 
+            this.hasPaused = true;
+
             this.player.pauseVideo();
-            this.clearTask();
         },
-        clearTask() {
-            const { intervalTask } = this;
+        handlePassport(passport) {
+            const hasPassportChanged = this.lastPassportId !== passport.id;
+            this.lastPassportId = passport.id;
 
-            if (intervalTask) {
-                clearInterval(intervalTask);
+            if (hasPassportChanged) {
+                this.hasPaused = false;
 
-                this.intervalTask = null;
+                this.player.seekTo(0);
+                this.player.playVideo();
+                return;
             }
-        },
-        handlePassport() {
+
             if (!this.player.getPlayerState) {
                 return;
             }
@@ -92,7 +99,9 @@ export default {
         firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
     },
     beforeDestroy() {
-        this.clearTask();
+        if (this.intervalTask) {
+            clearInterval(this.intervalTask);
+        }
     }
 };
 </script>
