@@ -47,6 +47,7 @@
 
 <script>
 import castService from '~/src/castService';
+import hotkeysService from '~/src/hotkeysService';
 
 export default {
     name: 'Layout',
@@ -109,6 +110,38 @@ export default {
         contentColumnClasses() {
             return this.cast.isActive ? '' : 'col-md-8 col-lg-10';
         }
+    },
+    mounted() {
+        const pages = [
+            '/language',
+            '/dilemmas/register',
+            '/dilemmas/sign',
+            '/evaluation'
+        ];
+
+        hotkeysService.onLeft(() => {
+            const page = this.$route.path;
+            const currentIndex = pages.indexOf(page);
+            let nextIndex = currentIndex - 1;
+
+            if (nextIndex < 0) {
+                nextIndex = pages.length - 1;
+            }
+
+            this.$router.push(pages[nextIndex]);
+        });
+
+        hotkeysService.onRight(() => {
+            const page = this.$route.path;
+            const currentIndex = pages.indexOf(page);
+            let nextIndex = currentIndex + 1;
+
+            if (nextIndex >= pages.length) {
+                nextIndex = 0;
+            }
+
+            this.$router.push(pages[nextIndex]);
+        });
     }
 };
 </script>
