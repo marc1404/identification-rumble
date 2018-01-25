@@ -12,6 +12,7 @@ class ConnectionHandler {
         'answerDilemma',
         'getStats',
         'setReadOnlyMode',
+        'getReadOnlyMode',
         'getTagMapping',
         'setTagMapping'
     ];

@@ -1,6 +1,7 @@
 import Passport from './Passport';
 import * as jsonfile from 'jsonfile';
 import statsService from './statsService';
+import settingsService from './settingsService';
 
 class PassportService {
     passports: Passport[] = [];
@@ -31,6 +32,11 @@ class PassportService {
     }
 
     createPassport(): Passport {
+        if (settingsService.getReadOnlyMode()) {
+            console.warn('Cannot create passport in read-only mode!');
+            return null;
+        }
+
         const id = this.getNextId();
         const passport = new Passport(id, new Date());
 
@@ -41,6 +47,11 @@ class PassportService {
     }
 
     resetPassport(id: number): boolean {
+        if (settingsService.getReadOnlyMode()) {
+            console.warn('Cannot reset passport in read-only mode!');
+            return false;
+        }
+
         const passport = this.getPassport(id);
 
         if (!passport) {
@@ -54,6 +65,11 @@ class PassportService {
     }
 
     removePassport(id: number): boolean {
+        if (settingsService.getReadOnlyMode()) {
+            console.warn('Cannot remove passport in read-only mode!');
+            return false;
+        }
+
         for (let i = 0; i < this.passports.length; i++) {
             if (this.passports[i].id === id) {
                 this.passports.splice(i, 1);

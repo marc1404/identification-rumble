@@ -2,6 +2,7 @@
     <div v-show="!cast.isActive">
 
         <div class="mb-3">
+            <div class="badge badge-warning mr-1" v-show="!isConnected">Not connected</div>
             <span class="badge badge-success mr-1" v-show="isConnected">Connected</span>
             <span class="badge badge-danger mr-1" v-show="hasError">Error</span>
         </div>
@@ -10,12 +11,16 @@
             <strong>Last passport: <code>{{ lastTag }}</code></strong>
         </div>
 
-        <div class="mb-3" v-for="(mapping, tag) in tagMap">
-            <label :for="tag">
-                {{ mapping.name }}
-                <code>{{ tag }}</code>
-            </label>
-            <input :id="tag" type="text" class="form-control text-center" style="width: 10rem" v-model="mapping.passportId">
+        <h1>Tag mapping</h1>
+
+        <div class="row">
+            <div class="col-6 col-lg-3 mb-3" v-for="(mapping, tag) in rfidService.tagMapping">
+                <label :for="tag">
+                    {{ mapping.name }}
+                    <code>{{ tag }}</code>
+                </label>
+                <input :id="tag" type="text" class="form-control text-center" style="width: 10rem" v-model="mapping.value" :disabled="readOnlyMode.enabled">
+            </div>
         </div>
 
     </div>
@@ -24,6 +29,9 @@
 <script>
 import rfidService from '~/src/rfidService';
 import throttle from 'lodash.throttle';
+import readOnlyModeService from '~/src/readOnlyModeService';
+import debounce from 'lodash.debounce';
+import socketService from '~/src/socketService';
 
 export default {
     name: 'RFID',
@@ -37,13 +45,25 @@ export default {
         return {
             isConnected: false,
             hasError: false,
-            tagMap: rfidService.tagMap,
+            rfidService: rfidService,
+            readOnlyMode: readOnlyModeService,
             lastTag: null
         };
     },
+    methods: {
+        saveTagMapping: debounce(() => {
+            const mappingEntries = Object.entries(rfidService.tagMapping);
+
+            for (const [tag, mapping] of mappingEntries) {
+                socketService
+                    .setTagMapping(tag, mapping.value)
+                    .catch(error => console.error(error));
+            }
+        }, 1000)
+    },
     async mounted() {
         try {
-            await rfidService.connect();
+            this.isConnected = await rfidService.connect();
         } catch (error) {
             this.hasError = true;
 
@@ -51,7 +71,6 @@ export default {
             return;
         }
 
-        this.isConnected = true;
         const emit = throttle(tag => this.$emit('passportId', tag), 1000);
 
         rfidService.onTag(tag => {
@@ -62,6 +81,14 @@ export default {
     },
     beforeDestroy() {
         rfidService.close();
+    },
+    watch: {
+        'rfidService.tagMapping': {
+            handler() {
+                this.saveTagMapping();
+            },
+            deep: true
+        }
     }
 };
 </script>

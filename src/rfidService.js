@@ -1,40 +1,19 @@
+import socketService from './socketService';
+
 class RfidService {
     constructor() {
         this.connection = null;
         this.rfid = null;
         this.listeners = [];
-        this.tagMap = {
-            '79001ff8c8': {
-                name: 'Card',
-                passportId: 0
-            },
-            '4a0037db70': {
-                name: 'Blue chip',
-                passportId: 1
-            },
-            '430039cdf7': {
-                name: 'White chip',
-                passportId: 2
-            },
-            '430039a40f': {
-                name: 'White chip',
-                passportId: 3
-            },
-            '7f002a6f6b': {
-                name: 'White copper',
-                passportId: 4
-            },
-            '7f002a6d76': {
-                name: 'White copper',
-                passportId: 5
-            }
-        };
+        this.tagMapping = {};
     }
 
     async connect() {
         const url = 'ws://localhost:8989/phidgets';
         const options = { name: 'test', passwd: '' };
         this.connection = new jPhidgets.Connection(url, options);
+
+        this.updateTagMapping().catch(error => console.error(error));
 
         try {
             await this.connection.connect();
@@ -56,9 +35,9 @@ class RfidService {
         return true;
     }
 
-    handleTag(tag) {
-        const mapping = this.tagMap[tag];
-        const value = mapping ? mapping.passportId : tag;
+    async handleTag(tag) {
+        const mapping = this.tagMapping[tag];
+        const value = mapping ? mapping.value : tag;
 
         this.listeners.forEach(listener => listener(value));
     }
@@ -88,6 +67,11 @@ class RfidService {
                 console.error(error);
             }
         }
+    }
+
+    async updateTagMapping() {
+        const tagMapping = await socketService.getTagMapping();
+        this.tagMapping = tagMapping || {};
     }
 }
 

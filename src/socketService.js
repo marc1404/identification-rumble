@@ -64,6 +64,28 @@ class SocketService {
     getStats() {
         return this.emit('getStats');
     }
+
+    setReadOnlyMode(password, enabled) {
+        return this.emit('setReadOnlyMode', {
+            password: password,
+            enabled: enabled
+        });
+    }
+
+    getReadOnlyMode() {
+        return this.emit('getReadOnlyMode');
+    }
+
+    getTagMapping() {
+        return this.emit('getTagMapping');
+    }
+
+    setTagMapping(tag, value) {
+        return this.emit('setTagMapping', {
+            tag: tag,
+            value: value
+        });
+    }
 }
 
 export default new SocketService();

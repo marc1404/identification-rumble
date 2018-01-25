@@ -35,11 +35,21 @@ class EventHandler {
         return statsService.getStats();
     }
 
-    async setReadOnlyMode({ enabled }) {}
+    async setReadOnlyMode({ password, enabled }) {
+        return settingsService.setReadOnlyMode(password, enabled);
+    }
 
-    async getTagMapping() {}
+    async getReadOnlyMode() {
+        return settingsService.getReadOnlyMode();
+    }
 
-    async setTagMapping({ tag, value }) {}
+    async getTagMapping() {
+        return settingsService.getTagMapping();
+    }
+
+    async setTagMapping({ tag, value }) {
+        return settingsService.setTagMapping(tag, value);
+    }
 }
 
 export default new EventHandler();

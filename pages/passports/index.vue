@@ -4,7 +4,7 @@
         <section class="mb-3">
             <h1>
                 Passports
-                <button type="button" class="btn btn-danger btn-sm" @click="createPassport()">Create</button>
+                <button type="button" class="btn btn-danger btn-sm" @click="createPassport()" v-if="!readOnlyMode.enabled">Create</button>
             </h1>
 
             <div class="card-columns">
@@ -28,11 +28,11 @@
                             <i class="material-icons md-18 text-dark pr-1">visibility</i>
                             <span class="text-danger">Open</span>
                         </nuxt-link>
-                        <a href="#" class="card-link" @click.prevent="resetPassport(passport)">
+                        <a href="#" class="card-link" @click.prevent="resetPassport(passport)" v-if="!readOnlyMode.enabled">
                             <i class="material-icons md-18 text-dark pr-1">restore</i>
                             <span class="text-danger">Reset</span>
                         </a>
-                        <a href="#" class="card-link" @click.prevent="removePassport(passport)">
+                        <a href="#" class="card-link" @click.prevent="removePassport(passport)" v-if="!readOnlyMode.enabled">
                             <i class="material-icons md-18 text-dark pr-1">delete_forever</i>
                             <span class="text-danger">Remove</span>
                         </a>
@@ -53,6 +53,7 @@ import socketService from '../../src/socketService';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import flagComponent from '~/components/flag.vue';
 import languageService from '../../src/languageService';
+import readOnlyModeService from '~/src/readOnlyModeService';
 
 export default {
     name: 'Passports',
@@ -67,7 +68,8 @@ export default {
     data() {
         return {
             hasJewishAncestry: false,
-            passports: []
+            passports: [],
+            readOnlyMode: readOnlyModeService
         };
     },
     methods: {

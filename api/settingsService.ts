@@ -21,9 +21,22 @@ class SettingsService {
         this.settings = new Settings(readOnlyMode, tagMapping);
     }
 
-    setReadOnlyMode(enabled: boolean) {
+    setReadOnlyMode(password: string, enabled: boolean) {
+        if (password !== process.env.API_PASSWORD) {
+            console.warn(
+                `Incorrect password ${password} for changing read-only mode to ${enabled}!`
+            );
+            return false;
+        }
+
         this.settings.setReadOnlyMode(enabled);
         this.save();
+
+        return true;
+    }
+
+    getReadOnlyMode(): boolean {
+        return this.settings.getReadOnlyMode();
     }
 
     getTagMapping(): Object {
@@ -31,8 +44,15 @@ class SettingsService {
     }
 
     setTagMapping(tag: string, value: string) {
+        if (this.getReadOnlyMode()) {
+            console.warn('Cannot change tag mappings in read-only mode!');
+            return false;
+        }
+
         this.settings.setTagMapping(tag, value);
         this.save();
+
+        return true;
     }
 
     save() {

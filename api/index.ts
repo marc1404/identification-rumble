@@ -1,3 +1,9 @@
+import * as dotenv from 'dotenv';
+
+try {
+    dotenv.config();
+} catch (error) {}
+
 import * as http from 'http';
 import * as socketIO from 'socket.io';
 import { IncomingMessage, ServerResponse } from 'http';

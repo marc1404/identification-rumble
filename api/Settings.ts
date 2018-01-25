@@ -13,11 +13,23 @@ export default class Settings {
         this.readOnlyMode = enabled;
     }
 
+    getReadOnlyMode(): boolean {
+        return this.readOnlyMode;
+    }
+
     getTagMapping(): Object {
         return this.tagMapping;
     }
 
-    setTagMapping(tag: string, value: string) {
-        this.tagMapping[tag] = value;
+    setTagMapping(tag: string, value: string): boolean {
+        const mapping = this.tagMapping[tag];
+
+        if (!mapping) {
+            return false;
+        }
+
+        mapping.value = value;
+
+        return true;
     }
 }
