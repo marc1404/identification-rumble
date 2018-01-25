@@ -35,7 +35,7 @@ export default {
             this.player = new YT.Player('youtube-video', {
                 videoId: 'N3FjLWUuDWU',
                 playerVars: {
-                    controls: 0,
+                    controls: 1,
                     autoplay: 0,
                     modestbranding: 1,
                     disablekb: 1,
@@ -50,7 +50,7 @@ export default {
             });
         },
         checkVideoTime(time) {
-            const shouldDoNothing = this.hasPaused || time < 94;
+            const shouldDoNothing = this.hasPaused || time < 91;
 
             if (shouldDoNothing) {
                 return;
@@ -79,7 +79,14 @@ export default {
             const playerState = this.player.getPlayerState();
 
             if (playerState === playerStates.PAUSED) {
+                this.player.seekTo(98);
                 this.player.playVideo();
+            } else {
+                const time = this.player.getCurrentTime();
+
+                if (time >= 82 && time < 91) {
+                    this.hasPaused = true;
+                }
             }
         }
     },
