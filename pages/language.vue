@@ -25,6 +25,7 @@ import flagComponent from '~/components/flag.vue';
 import scannerComponent from '~/components/scanner/scanner.vue';
 import languageService from '../src/languageService';
 import socketService from '../src/socketService';
+import hotkeysService from '~/src/hotkeysService';
 
 export default {
     name: 'Language',
@@ -50,6 +51,29 @@ export default {
                 this.selectedLanguage.code
             );
         }
+    },
+    mounted() {
+        hotkeysService.onUp(() => {
+            const currentIndex = this.languages.indexOf(this.selectedLanguage);
+            let nextIndex = currentIndex - 1;
+
+            if (nextIndex < 0) {
+                nextIndex = this.languages.length - 1;
+            }
+
+            this.selectedLanguage = this.languages[nextIndex];
+        });
+
+        hotkeysService.onDown(() => {
+            const currentIndex = this.languages.indexOf(this.selectedLanguage);
+            let nextIndex = currentIndex + 1;
+
+            if (nextIndex >= this.languages.length) {
+                nextIndex = 0;
+            }
+
+            this.selectedLanguage = this.languages[nextIndex];
+        });
     }
 };
 </script>
