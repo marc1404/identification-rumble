@@ -5,7 +5,7 @@ class NotificationService {
         new Noty({
             theme: 'bootstrap-v4',
             type: 'success',
-            layout: 'topLeft',
+            layout: 'topRight',
             text: message,
             timeout: 2000
         }).show();
