@@ -15,7 +15,7 @@
         <div class="p-3">
             <component :is="dilemma.componentName" :languageCode="languageCode" :onPassport="onPassport" />
 
-            <section class="mb-3" v-if="!areAnswersHidden && dilemma.id !== 0">
+            <section class="mb-3" v-if="!areAnswersHidden || dilemma.id !== 0">
                 <h1>
                     Answers
                     <button type="button" class="btn btn-light btn-sm" title="Hide answers" @click="hideAnswers">
