@@ -15,13 +15,8 @@
         <div class="p-3">
             <component :is="dilemma.componentName" :languageCode="languageCode" :onPassport="onPassport" />
 
-            <section class="mb-3" v-if="!areAnswersHidden || dilemma.id !== 0">
-                <h1>
-                    Answers
-                    <button type="button" class="btn btn-light btn-sm" title="Hide answers" @click="hideAnswers" v-if="!areAnswersHidden">
-                        <i class="material-icons">close</i>
-                    </button>
-                </h1>
+            <section class="mb-3">
+                <h1>Answers</h1>
 
                 <div class="custom-control custom-radio" v-for="answer in dilemma.answers">
                     <input :id="getAnswerElementId(answer)" type="radio" name="answerRadios" class="custom-control-input" :value="answer" v-model="selectedAnswer">
@@ -45,6 +40,7 @@ import signComponent from '~/components/dilemmas/sign.vue';
 import socketService from '../../src/socketService';
 import castService from '~/src/castService';
 import presetService from '~/src/presetService';
+import hotkeysService from '~/src/hotkeysService';
 
 export default {
     name: 'Dilemma',
@@ -112,6 +108,32 @@ export default {
     },
     mounted() {
         this.areAnswersHidden = presetService.getHiddenAnswers();
+
+        hotkeysService.onUp(() => {
+            const currentIndex = this.dilemma.answers.indexOf(
+                this.selectedAnswer
+            );
+            let nextIndex = currentIndex - 1;
+
+            if (nextIndex < 0) {
+                nextIndex = this.dilemma.answers.length - 1;
+            }
+
+            this.selectedAnswer = this.dilemma.answers[nextIndex];
+        });
+
+        hotkeysService.onDown(() => {
+            const currentIndex = this.dilemma.answers.indexOf(
+                this.selectedAnswer
+            );
+            let nextIndex = currentIndex + 1;
+
+            if (nextIndex >= this.dilemma.answers.length) {
+                nextIndex = 0;
+            }
+
+            this.selectedAnswer = this.dilemma.answers[nextIndex];
+        });
     }
 };
 </script>
