@@ -38,7 +38,7 @@ export default {
                     controls: 0,
                     autoplay: 0,
                     modestbranding: 1,
-                    disablekb: 1,
+                    disablekb: 0,
                     enablejsapi: 1,
                     fs: 0,
                     rel: 0,
