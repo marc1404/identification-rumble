@@ -5,32 +5,22 @@
             <i class="material-icons">{{ castIcon }}</i>
         </button>
 
-        <div class="d-flex flex-column" style="min-height: 100vh">
-            <header class="bg-light p-2" style="padding-right: 50px !important" v-show="!cast.isActive">
-                <img class="img-fluid" style="max-height: 50px" src="~/assets/logo-hq.png" alt="Identification Rumble">
-            </header>
+        <header class="bg-light p-2" style="padding-right: 50px !important" v-show="!cast.isActive">
+            <img class="img-fluid" style="max-height: 50px" src="~/assets/logo-hq.png" alt="Identification Rumble">
+        </header>
 
-            <div class="row m-0 flex-column flex-sm-row" style="flex: 1">
-                <div class="col-12 col-md-4 col-lg-2 d-flex p-0 sidebar" v-if="!cast.isActive">
-
-                    <aside class="bg-light w-100">
-                        <nav class="nav nav-pills flex-column">
-                            <nuxt-link :key="link.to" :to="link.to" class="nav-item nav-link" :exact="link.exact" v-for="link in aside">
-                                <i class="material-icons md-18 text-dark pr-1">{{ link.icon }}</i>
-                                <span class="text-danger">{{ link.label }}</span>
-                            </nuxt-link>
-                        </nav>
-                    </aside>
-
-                </div>
-                <div class="col-12 p-0" :class="contentColumnClasses">
-
-                    <article>
-                        <nuxt />
-                    </article>
-
-                </div>
-            </div>
+        <div style="display: flex; align-items: stretch">
+            <aside class="bg-light" style="min-height: 100vh" v-if="!cast.isActive">
+                <nav class="nav nav-pills flex-column">
+                    <nuxt-link :key="link.to" :to="link.to" class="nav-item nav-link text-nowrap" :exact="link.exact" v-for="link in aside">
+                        <i class="material-icons md-18 text-dark pr-1">{{ link.icon }}</i>
+                        <span class="text-danger">{{ link.label }}</span>
+                    </nuxt-link>
+                </nav>
+            </aside>
+            <article>
+                <nuxt />
+            </article>
         </div>
 
         <footer class="bg-light py-1" v-show="!cast.isActive">
@@ -106,9 +96,6 @@ export default {
     computed: {
         castIcon() {
             return this.cast.isActive ? 'cast_connected' : 'cast';
-        },
-        contentColumnClasses() {
-            return this.cast.isActive ? '' : 'col-md-8 col-lg-10';
         }
     },
     mounted() {
@@ -184,11 +171,5 @@ body {
     top: 5px;
     right: 5px;
     z-index: 42000;
-}
-
-@media (min-width: 768px) {
-    .sidebar {
-        max-width: 10rem;
-    }
 }
 </style>
