@@ -11,7 +11,7 @@
             </header>
 
             <div class="row m-0 flex-column flex-sm-row" style="flex: 1">
-                <div class="col-12 col-md-4 col-lg-2 d-flex p-0" v-if="!cast.isActive">
+                <div class="col-12 col-md-4 col-lg-2 d-flex p-0 sidebar" v-if="!cast.isActive">
 
                     <aside class="bg-light w-100">
                         <nav class="nav nav-pills flex-column">
@@ -179,16 +179,16 @@ body {
     color: white !important;
 }
 
-@media (max-width: 575px) {
-    .h1-responsive {
-        font-size: 2rem;
-    }
-}
-
 .btn-cast {
     position: absolute;
     top: 5px;
     right: 5px;
     z-index: 42000;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        max-width: 10rem;
+    }
 }
 </style>
