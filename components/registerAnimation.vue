@@ -33,7 +33,7 @@ export default {
         onYouTubeAPIReady() {
             const { YT } = window;
             this.player = new YT.Player('youtube-video', {
-                videoId: 'N3FjLWUuDWU',
+                videoId: 'c1EpEva8_V8',
                 playerVars: {
                     controls: 0,
                     autoplay: 0,
