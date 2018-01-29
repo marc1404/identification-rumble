@@ -41,7 +41,7 @@ export default {
         function accordify(element) {
             new OriDomi(element, {
                 vPanels: 3,
-                maxAngle: 85,
+                maxAngle: 80,
                 ripple: 1,
                 speed: 2000
             }).accordion(45);
