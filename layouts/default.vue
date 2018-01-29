@@ -9,8 +9,8 @@
             <img class="img-fluid" style="max-height: 50px" src="~/assets/logo-hq.png" alt="Identification Rumble">
         </header>
 
-        <div style="display: flex; align-items: stretch">
-            <aside class="bg-light" style="min-height: 100vh" v-if="!cast.isActive">
+        <div class="content-container">
+            <aside class="sidebar bg-light" v-if="!cast.isActive">
                 <nav class="nav nav-pills flex-column">
                     <nuxt-link :key="link.to" :to="link.to" class="nav-item nav-link text-nowrap" :exact="link.exact" v-for="link in aside">
                         <i class="material-icons md-18 text-dark pr-1">{{ link.icon }}</i>
@@ -171,5 +171,21 @@ body {
     top: 5px;
     right: 5px;
     z-index: 42000;
+}
+
+.content-container {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .content-container {
+        flex-direction: row;
+    }
+
+    .sidebar {
+        min-height: 100vh;
+    }
 }
 </style>
