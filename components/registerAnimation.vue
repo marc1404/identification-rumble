@@ -32,8 +32,11 @@ export default {
         },
         onYouTubeAPIReady() {
             const { YT } = window;
+            const width = Math.max(window.innerWidth / 2, 300);
             this.player = new YT.Player('youtube-video', {
                 videoId: 'c1EpEva8_V8',
+                width: width,
+                height: width / 2,
                 playerVars: {
                     controls: 0,
                     autoplay: 0,
