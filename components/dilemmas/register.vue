@@ -6,7 +6,7 @@
 </style>
 
 <template>
-    <div :class="{ 'dark-mode': cast.isActive }">
+    <div>
         <h1>{{ text.heading }}</h1>
 
         <register-animation :onPassport="onPassport" />

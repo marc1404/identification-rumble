@@ -18,7 +18,7 @@
                     </nuxt-link>
                 </nav>
             </aside>
-            <article style="flex-grow: 1">
+            <article style="flex-grow: 1" :style="articleStyle">
                 <nuxt />
             </article>
         </div>
@@ -96,6 +96,17 @@ export default {
     computed: {
         castIcon() {
             return this.cast.isActive ? 'cast_connected' : 'cast';
+        },
+        articleStyle() {
+            if (!this.cast.isActive) {
+                return null;
+            }
+
+            return {
+                display: 'flex',
+                justifyContent: 'center',
+                paddingTop: '1rem'
+            };
         }
     },
     mounted() {

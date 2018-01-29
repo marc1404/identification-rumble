@@ -1,18 +1,14 @@
 <template>
-    <div class="row">
-        <div class="col-12 col-lg-6">
+    <div style="max-width: 50rem">
+        <h1>{{ text.heading }}</h1>
 
-            <h1>{{ text.heading }}</h1>
+        <p class="lead">{{ text.firstParagraph }}</p>
 
-            <p class="lead">{{ text.firstParagraph }}</p>
+        <p class="lead">{{ text.secondParagraph }}</p>
 
-            <p class="lead">{{ text.secondParagraph }}</p>
-
-            <p class="lead">
-                <strong>{{ text.lead }}</strong>
-            </p>
-
-        </div>
+        <p class="lead">
+            <strong>{{ text.lead }}</strong>
+        </p>
     </div>
 </template>
 
