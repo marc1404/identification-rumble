@@ -18,7 +18,7 @@
                     </nuxt-link>
                 </nav>
             </aside>
-            <article>
+            <article style="flex-grow: 1">
                 <nuxt />
             </article>
         </div>
