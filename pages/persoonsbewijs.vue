@@ -1,6 +1,6 @@
 <template>
     <div class="p-3">
-        <h1>&bdquo;Persoonsbewijs&rdquo;</h1>
+        <h1>Persoonsbewijs</h1>
 
         <div class="row">
             <div class="col-12 col-lg-6 mb-3">

@@ -9,7 +9,7 @@
 
 * [Poster](/static/poster.pdf)
 * [System Architecture](/assets/system-architecture.png)
-* ["Persoonsbewijs"](https://identification-rumble.science/persoonsbewijs)
+* [Persoonsbewijs](https://identification-rumble.science/persoonsbewijs)
 
 ## Meet the Team
 

@@ -7,9 +7,7 @@
             <br>
             <nuxt-link to="/system-architecture">System Architecture</nuxt-link>
             <br>
-            <nuxt-link to="/persoonsbewijs">
-                &bdquo;Persoonsbewijs&rdquo;
-            </nuxt-link>
+            <nuxt-link to="/persoonsbewijs">Persoonsbewijs</nuxt-link>
         </p>
 
         <div class="row">
