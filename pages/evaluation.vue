@@ -3,7 +3,7 @@
 
         <h1>Evaluation Station</h1>
 
-        <p class="lead" v-if="!passport">Please identify yourself using your passport!</p>
+        <p class="lead" v-if="!passport">Please identify yourself using your ID card!</p>
         <div v-else>
 
             <section class="mb-3">

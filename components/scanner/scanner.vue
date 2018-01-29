@@ -68,7 +68,7 @@ export default {
             }
 
             this.beep.play().catch(error => console.error(error));
-            notificationService.success('Passport scanned!');
+            notificationService.success('ID card scanned!');
             this.$emit('passport', passport);
         }
     },

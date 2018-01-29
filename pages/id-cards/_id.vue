@@ -3,10 +3,10 @@
         <nav aria-label="breadcrumb" v-show="!cast.isActive">
             <ol class="breadcrumb bg-light rounded-0">
                 <li class="breadcrumb-item">
-                    <nuxt-link to="/passports" class="text-danger">Passports</nuxt-link>
+                    <nuxt-link to="/id-cards" class="text-danger">ID Cards</nuxt-link>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    Passport #{{ $route.params.id }}
+                    ID Card #{{ $route.params.id }}
                 </li>
             </ol>
         </nav>
@@ -20,10 +20,10 @@ import QRCode from 'qrcode';
 import castService from '~/src/castService';
 
 export default {
-    name: 'Passport',
+    name: 'IDCard',
     head() {
         return {
-            title: 'Passport #' + this.$route.params.id
+            title: 'ID Card #' + this.$route.params.id
         };
     },
     data() {

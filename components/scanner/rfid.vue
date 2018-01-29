@@ -8,7 +8,7 @@
         </div>
 
         <div class="mb-3">
-            <strong>Last passport: <code>{{ lastTag }}</code></strong>
+            <strong>Last ID card: <code>{{ lastTag }}</code></strong>
         </div>
 
         <h1>Tag mapping</h1>

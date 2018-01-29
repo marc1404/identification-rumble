@@ -47,8 +47,8 @@ export default {
             aside: [
                 { to: '/', label: 'Home', icon: 'home', exact: true },
                 {
-                    to: '/passports',
-                    label: 'Passports',
+                    to: '/id-cards',
+                    label: 'ID Cards',
                     icon: 'perm_contact_calendar'
                 },
                 { to: '/language', label: 'Language', icon: 'translate' },

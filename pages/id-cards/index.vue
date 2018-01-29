@@ -3,7 +3,7 @@
 
         <section class="mb-3">
             <h1>
-                Passports
+                ID Cards
                 <button type="button" class="btn btn-danger btn-sm" @click="createPassport()" v-if="!readOnlyMode.enabled">Create</button>
             </h1>
 
@@ -11,7 +11,7 @@
 
                 <div :key="passport.id" class="card" v-for="passport in passports">
                     <h5 class="card-header">
-                        Passport #{{ passport.id }}
+                        ID Card #{{ passport.id }}
                     </h5>
                     <div class="card-body">
                         <p class="card-text">
@@ -24,7 +24,7 @@
                         </p>
                     </div>
                     <div class="card-body">
-                        <nuxt-link :to="{ name: 'passports-id', params: { id: passport.id }}" class="card-link">
+                        <nuxt-link :to="{ name: 'id-cards-id', params: { id: passport.id }}" class="card-link">
                             <i class="material-icons md-18 text-dark pr-1">visibility</i>
                             <span class="text-danger">Open</span>
                         </nuxt-link>
@@ -56,13 +56,13 @@ import languageService from '../../src/languageService';
 import readOnlyModeService from '~/src/readOnlyModeService';
 
 export default {
-    name: 'Passports',
+    name: 'IDCards',
     components: {
         flag: flagComponent
     },
     head() {
         return {
-            title: 'Passports'
+            title: 'ID Cards'
         };
     },
     data() {
