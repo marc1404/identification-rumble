@@ -1,6 +1,11 @@
 <template>
     <div class="p-3">
 
+        <h1>Project</h1>
+        <p class="lead">
+            <nuxt-link to="/system-architecture">System Architecture</nuxt-link>
+        </p>
+
         <div class="row">
             <div class="col-12 col-lg-4">
                 <h2>University of Amsterdam</h2>
