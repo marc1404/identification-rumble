@@ -64,8 +64,7 @@ export default {
             selectedAnswer: null,
             passport: null,
             cast: castService,
-            onPassport: [],
-            areAnswersHidden: true
+            onPassport: []
         };
     },
     computed: {
@@ -101,14 +100,9 @@ export default {
             if (answer) {
                 this.selectedAnswer = answer;
             }
-        },
-        hideAnswers() {
-            this.areAnswersHidden = true;
         }
     },
     mounted() {
-        this.areAnswersHidden = presetService.getHiddenAnswers();
-
         hotkeysService.onUp(() => {
             const currentIndex = this.dilemma.answers.indexOf(
                 this.selectedAnswer

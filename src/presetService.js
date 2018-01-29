@@ -1,7 +1,6 @@
 class PresetService {
     constructor() {
         this.scannerMode = null;
-        this.hiddenAnswers = false;
 
         this.init();
     }
@@ -14,7 +13,6 @@ class PresetService {
         }
 
         this.scannerMode = localStorage.getItem('scannerMode') || null;
-        this.hiddenAnswers = localStorage.getItem('hiddenAnswers') || false;
 
         const identificationRumble = (window.__IDENTIFICATION_RUMBLE__ =
             window.__IDENTIFICATION_RUMBLE__ || {});
@@ -24,20 +22,10 @@ class PresetService {
 
             this.persist('scannerMode', scannerMode);
         };
-
-        identificationRumble.setHiddenAnswers = hiddenAnswers => {
-            this.hiddenAnswers = hiddenAnswers;
-
-            this.persist('hiddenAnswers', hiddenAnswers);
-        };
     }
 
     getScannerMode() {
         return this.scannerMode;
-    }
-
-    getHiddenAnswers() {
-        return this.hiddenAnswers;
     }
 
     persist(key, value) {
