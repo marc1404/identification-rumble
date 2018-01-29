@@ -3,10 +3,6 @@
 </template>
 
 <script>
-const playerStates = {
-    PAUSED: 2
-};
-
 export default {
     name: 'RegisterAnimation',
     props: {
@@ -18,23 +14,15 @@ export default {
     data() {
         return {
             player: null,
-            intervalTask: null,
-            lastPassportId: null,
-            hasPaused: false
+            lastPassportId: null
         };
     },
     methods: {
-        onPlayerReady() {
-            this.intervalTask = setInterval(
-                () => this.checkVideoTime(this.player.getCurrentTime()),
-                1000
-            );
-        },
         onYouTubeAPIReady() {
             const { YT } = window;
             const width = Math.max(window.innerWidth / 2, 300);
             this.player = new YT.Player('youtube-video', {
-                videoId: 'c1EpEva8_V8',
+                videoId: '5d7v0RUo9IM',
                 width: width,
                 height: width / 2,
                 playerVars: {
@@ -46,30 +34,14 @@ export default {
                     fs: 0,
                     rel: 0,
                     showinfo: 0
-                },
-                events: {
-                    onReady: () => this.onPlayerReady()
                 }
             });
-        },
-        checkVideoTime(time) {
-            const shouldDoNothing = this.hasPaused || time < 91;
-
-            if (shouldDoNothing) {
-                return;
-            }
-
-            this.hasPaused = true;
-
-            this.player.pauseVideo();
         },
         handlePassport(passport) {
             const hasPassportChanged = this.lastPassportId !== passport.id;
             this.lastPassportId = passport.id;
 
             if (hasPassportChanged) {
-                this.hasPaused = false;
-
                 this.player.seekTo(0);
                 this.player.playVideo();
                 return;
@@ -79,17 +51,10 @@ export default {
                 return;
             }
 
-            const playerState = this.player.getPlayerState();
+            const time = this.player.getCurrentTime();
 
-            if (playerState === playerStates.PAUSED) {
-                this.player.seekTo(98);
-                this.player.playVideo();
-            } else {
-                const time = this.player.getCurrentTime();
-
-                if (time >= 82 && time < 91) {
-                    this.hasPaused = true;
-                }
+            if (time >= 95 && time < 135) {
+                this.player.seekTo(135);
             }
         }
     },
@@ -107,11 +72,6 @@ export default {
         const firstScriptTag = document.getElementsByTagName('script')[0];
 
         firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
-    },
-    beforeDestroy() {
-        if (this.intervalTask) {
-            clearInterval(this.intervalTask);
-        }
     }
 };
 </script>
