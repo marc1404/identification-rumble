@@ -3,11 +3,13 @@
 
         <h1>Project</h1>
         <p class="lead">
+            <a href="/poster.pdf" rel="noopener">Poster</a>
+            <br>
+            <nuxt-link to="/system-architecture">System Architecture</nuxt-link>
+            <br>
             <nuxt-link to="/persoonsbewijs">
                 &bdquo;Persoonsbewijs&rdquo;
             </nuxt-link>
-            <br>
-            <nuxt-link to="/system-architecture">System Architecture</nuxt-link>
         </p>
 
         <div class="row">

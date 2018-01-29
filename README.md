@@ -5,6 +5,12 @@
 
 **[Wiki](http://uva-hcm.com/index.php?title=ID2017-team5)** | **[Website](https://identification-rumble.science)** | **[Verzetsmuseum Amsterdam](https://www.verzetsmuseum.org/museum/en/museum)** | **[AUX'18](http://uva-aux.nl/)**
 
+## Project
+
+* [Poster](/static/poster.pdf)
+* [System Architecture](/assets/system-architecture.png)
+* ["Persoonsbewijs"](https://identification-rumble.science/persoonsbewijs)
+
 ## Meet the Team
 
 [University of Amsterdam:](http://www.uva.nl/en/home)
