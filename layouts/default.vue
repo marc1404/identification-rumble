@@ -6,7 +6,9 @@
         </button>
 
         <header class="bg-light p-2" style="padding-right: 50px !important" v-show="!cast.isActive">
-            <img class="img-fluid" style="max-height: 50px" src="~/assets/logo-hq.png" alt="Identification Rumble">
+            <nuxt-link to="/">
+                <img class="img-fluid" style="max-height: 50px" src="~/assets/logo-hq.png" alt="Identification Rumble">
+            </nuxt-link>
         </header>
 
         <div class="content-container">
