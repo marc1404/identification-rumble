@@ -1,14 +1,31 @@
 <template>
     <div class="p-3">
 
-        <h1>Project</h1>
-        <p class="lead">
-            <a href="/poster.pdf" rel="noopener">Poster</a>
-            <br>
-            <nuxt-link to="/system-architecture">System Architecture</nuxt-link>
-            <br>
-            <nuxt-link to="/persoonsbewijs">Persoonsbewijs</nuxt-link>
-        </p>
+        <div class="row">
+            <div class="col-12 col-lg-4">
+
+                <h1>Project</h1>
+                <p class="lead">
+                    <a href="/poster.pdf" rel="noopener">Poster</a>
+                    <br>
+                    <nuxt-link to="/system-architecture">System Architecture</nuxt-link>
+                    <br>
+                    <nuxt-link to="/persoonsbewijs">Persoonsbewijs</nuxt-link>
+                </p>
+
+            </div>
+            <div class="col-12 col-lg-8">
+
+                <h1>About</h1>
+                <p class="lead">
+                    The Dutch Resistance Museum in Amsterdam would like to increase interactivity between their visitors and several dilemmas that Dutch citizens faced during World War II.
+                    Identification Rumble offers a solution in smart replicas of identity cards with RFID tags that visitors can scan at several exhibits.
+                    At the exhibits, visitors are shown an animation that explains the dilemma and are then able to choose what they would do using the RFID technology.
+                    Afterwards, visitors are shown an evaluation of how their choices relate to other visitors and citizens of that time.
+                </p>
+
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-12 col-lg-4">
@@ -21,6 +38,7 @@
                 </p>
             </div>
             <div class="col-12 col-lg-4">
+
                 <h2>Mediacollege Amsterdam</h2>
                 <p class="lead">
                     <template v-for="student in maStudents">
@@ -28,8 +46,10 @@
                         <br>
                     </template>
                 </p>
+
             </div>
             <div class="col-12 col-lg-4">
+
                 <h2>
                     Verzetsmuseum Amsterdam
                 </h2>
@@ -37,6 +57,7 @@
                     <a rel="noopener" href="https://www.verzetsmuseum.org/museum/en/museum">Homepage</a>
                 </p>
                 <img src="~/assets/quote.jpg" class="img-fluid rounded" />
+
             </div>
         </div>
 
