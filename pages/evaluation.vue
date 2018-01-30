@@ -20,6 +20,10 @@
                                 {{ dilemma.answerText }}
                             </p>
 
+                            <p class="card-text">
+                                {{ dilemma.answerConsequence }}
+                            </p>
+
                             <p class="card-text lead text-center">
                                 <strong>{{ dilemma.percent }}%</strong> of visitors answered the same.<br>
                                 {{ dilemma.nativeDilemma.answerFact }}
@@ -89,7 +93,9 @@ export default {
 
             for (const [dilemmaId, answerId] of answerEntries) {
                 const dilemma = dilemmaService.findById(dilemmaId);
-                const answerText = dilemma.getEvaluationTextFor(answerId);
+                const { evaluationText, consequence } = dilemma.findAnswerById(
+                    answerId
+                );
                 const answerStats = this.stats.dilemmas[dilemmaId];
                 const totalAnswers = Object.values(answerStats).reduce(
                     (sum, dates) => sum + dates.length,
@@ -102,7 +108,8 @@ export default {
 
                 dilemmas.push({
                     name: dilemma.name,
-                    answerText: answerText,
+                    answerText: evaluationText,
+                    answerConsequence: consequence,
                     answerStats: answerStats,
                     nativeDilemma: dilemma,
                     percent
