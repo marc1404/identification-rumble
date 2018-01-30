@@ -6,46 +6,51 @@
         <p class="lead" v-if="!passport">Please identify yourself using your ID card!</p>
         <div v-else>
 
-            <section class="mb-3">
-                <h2>Dilemmas</h2>
+            <div class="row">
+                <div class="col-12 col-xl-8 mb-3">
 
-                <div class="card-deck">
-                    <div class="card" style="max-width: 30rem" v-for="dilemma in dilemmas">
-                        <div class="card-body">
-                            <h3 class="card-title">
-                                {{ dilemma.name }}
-                            </h3>
+                    <h2>Dilemmas</h2>
 
-                            <p class="card-text">
-                                {{ dilemma.answerText }}
-                            </p>
+                    <div class="card-deck">
+                        <div class="card" style="max-width: 30rem" v-for="dilemma in dilemmas">
+                            <div class="card-body">
+                                <h3 class="card-title">
+                                    {{ dilemma.name }}
+                                </h3>
 
-                            <p class="card-text">
-                                {{ dilemma.answerConsequence }}
-                            </p>
+                                <p class="card-text">
+                                    {{ dilemma.answerText }}
+                                </p>
 
-                            <p class="card-text lead text-center">
-                                <strong>{{ dilemma.percent }}%</strong> of visitors answered the same.<br>
-                                {{ dilemma.nativeDilemma.answerFact }}
-                            </p>
+                                <p class="card-text">
+                                    {{ dilemma.answerConsequence }}
+                                </p>
 
-                            <answer-chart :answers="dilemma.answerStats" :dilemma="dilemma.nativeDilemma" />
+                                <p class="card-text lead text-center">
+                                    <strong>{{ dilemma.percent }}%</strong> of visitors answered the same.<br>
+                                    {{ dilemma.nativeDilemma.answerFact }}
+                                </p>
+
+                                <answer-chart :answers="dilemma.answerStats" :dilemma="dilemma.nativeDilemma" />
+                            </div>
                         </div>
                     </div>
+
                 </div>
-            </section>
+                <div class="col-12 col-xl-4">
 
-            <section class="mb-3">
-                <h2>Visitors</h2>
+                    <h2>Visitors</h2>
 
-                <p class="lead" v-show="totalVisitors">
-                    A total of <strong>{{ totalVisitors }} </strong> people visited the museum.
-                </p>
+                    <p class="lead" v-show="totalVisitors">
+                        A total of <strong>{{ totalVisitors }} </strong> people visited the museum.
+                    </p>
 
-                <div style="width: 20rem">
-                    <language-chart :languages="stats.languages" v-if="stats" />
+                    <div style="width: 20rem">
+                        <language-chart :languages="stats.languages" v-if="stats" />
+                    </div>
+
                 </div>
-            </section>
+            </div>
 
         </div>
 
