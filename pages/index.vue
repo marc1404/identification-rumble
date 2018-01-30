@@ -6,6 +6,12 @@
 
                 <h1>Project</h1>
                 <p class="lead">
+                    <a href="/paper.pdf" rel="noopener" class="mr-3" @click.prevent>Paper</a>
+                    <span class="badge badge-light" style="font-size: 0.7rem">coming soon</span>
+                    <br>
+                    <a href="" rel="noopener" class="mr-3" @click.prevent>Video</a>
+                    <span class="badge badge-light" style="font-size: 0.7rem">coming soon</span>
+                    <br>
                     <a href="/poster.pdf" rel="noopener">Poster</a>
                     <br>
                     <nuxt-link to="/system-architecture">System Architecture</nuxt-link>
