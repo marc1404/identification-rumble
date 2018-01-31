@@ -13,6 +13,8 @@
                     <br>
                     <a href="/poster.pdf" rel="noopener">Poster</a>
                     <br>
+                    <a href="/presentation.pdf" rel="noopener">Presentation</a>
+                    <br>
                     <nuxt-link to="/system-architecture">System Architecture</nuxt-link>
                     <br>
                     <nuxt-link to="/persoonsbewijs">Persoonsbewijs</nuxt-link>
