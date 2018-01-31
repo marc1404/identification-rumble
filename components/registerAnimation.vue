@@ -22,7 +22,7 @@ export default {
             const { YT } = window;
             const width = Math.max(window.innerWidth / 2, 300);
             this.player = new YT.Player('youtube-video', {
-                videoId: '5d7v0RUo9IM',
+                videoId: 'I5H5mv76yY8',
                 width: width,
                 height: width / 2,
                 playerVars: {
