@@ -7,7 +7,9 @@
 
 ## Project
 
+* [Paper](/static/Identification Rumble.pdf)
 * [Poster](/static/poster.pdf)
+* [Presentation](/static/presentation.pdf)
 * [System Architecture](/assets/system-architecture.png)
 * [Persoonsbewijs](https://identification-rumble.science/persoonsbewijs)
 

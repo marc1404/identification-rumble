@@ -6,8 +6,7 @@
 
                 <h1>Project</h1>
                 <p class="lead">
-                    <a href="/paper.pdf" rel="noopener" class="mr-3" @click.prevent>Paper</a>
-                    <span class="badge badge-light" style="font-size: 0.7rem">coming soon</span>
+                    <a href="/Identification Rumble.pdf" rel="noopener">Paper</a>
                     <br>
                     <nuxt-link to="/video">Video</nuxt-link>
                     <br>
