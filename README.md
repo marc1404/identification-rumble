@@ -7,7 +7,7 @@
 
 ## Project
 
-* [Paper](/static/Identification Rumble.pdf)
+* [Paper](/static/Identification%20Rumble.pdf)
 * [Poster](/static/poster.pdf)
 * [Presentation](/static/presentation.pdf)
 * [System Architecture](/assets/system-architecture.png)
